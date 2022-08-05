@@ -160,3 +160,8 @@ esbuild@^0.14.51:
     esbuild-windows-32 "0.14.51"
     esbuild-windows-64 "0.14.51"
     esbuild-windows-arm64 "0.14.51"
+
+jquery@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
+  integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==

@@ -2,4 +2,12 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 
+// Bootstrap
 import "bootstrap"
+
+// jQuery
+import "./src/jquery/jquery"
+
+// Custom JS
+import "./src/app"
+
