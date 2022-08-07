@@ -2,11 +2,22 @@
 			<div class="header-top-bar">
 					<div class="container-fluid">
 							<div class="header-top">
-									<div class="header-top-right">
+									<div class="header-top-left">
 											<ul class="header-info">
 													<li><a href="tel:+011235641231"><i class="icon-phone"></i>Call: 123 4561 5523</a></li>
 													<li><a href="mailto:info@edublink.com"><i class="icon-envelope"></i>Email: info@edublink.com</a></li>
 													<li><a href="#"><i class="icon-instagram"></i>Haraacademy</a></li>
+											</ul>
+									</div>
+									<div class="header-top-right">
+											<ul class="header-info">
+												<% if user_signed_in? %>
+													<li><%= current_user.first_name + " " + current_user.last_name %></li>
+													<li class="header-btn"><%= button_to destroy_user_session_path, class: "edu-btn btn-secondary btn-medium", method: :delete do %>Log out <i class="icon-4"></i><% end %></li>
+												<% else %>
+													<li><%= link_to "Registration", new_user_registration_path %></li>
+													<li class="header-btn"><%= link_to new_user_session_path, class: "edu-btn btn-secondary btn-medium" do %> Log in <i class="icon-4"></i><% end %></li>
+												<% end %>
 											</ul>
 									</div>
 							</div>
@@ -18,7 +29,7 @@
 							<div class="header-navbar">
 									<div class="header-brand">
 											<div class="logo">
-													<a href="index.html">
+													<a href="/">
 															<%= image_tag ("logo/logo-white.png"), alt: "Hara Academy", class: "logo-light" %>
 													</a>
 											</div>
@@ -30,14 +41,6 @@
 																			<ul class="submenu">
 																					<li><a href="course-one.html">Design</a></li>
 																					<li><a href="course-one.html">Development</a></li>
-																					<li><a href="course-one.html">Architecture</a></li>
-																					<li><a href="course-one.html">Life Style</a></li>
-																					<li><a href="course-one.html">Data Science</a></li>
-																					<li><a href="course-one.html">Marketing</a></li>
-																					<li><a href="course-one.html">Music</a></li>
-																					<li><a href="course-one.html">Photography</a></li>
-																					<li><a href="course-one.html">Finance</a></li>
-																					<li><a href="course-one.html">Motivation</a></li>
 																			</ul>
 																	</li>
 															</ul>
@@ -47,7 +50,7 @@
 									<div class="header-mainnav">
 											<nav class="mainmenu-nav">
 													<ul class="mainmenu">
-															<li><a href="#">Home</a>
+															<li><a href="/">Home</a>
 															</li>
 
 															<li><a href="#">Courses</a>
@@ -73,9 +76,6 @@
 															<a href="javascript:void(0)" class="search-trigger">
 																	<i class="icon-2"></i>
 															</a>
-													</li>
-													<li class="header-btn">
-															<a href="contact-us.html" class="edu-btn btn-medium">Login | Register<i class="icon-4"></i></a>
 													</li>
 													<li class="mobile-menu-bar d-block d-xl-none">
 															<button class="hamberger-button">

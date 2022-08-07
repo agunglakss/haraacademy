@@ -1,16 +1,33 @@
-<h2>Resend confirmation instructions</h2>
+<section class="account-page-area section-gap-equal">
+  <div class="container position-relative">
+    <div class="row g-5 justify-content-center">
+      <div class="col-lg-6">
+        <div class="login-form-box">
+          <h3 class="title">Resend confirmation email</h3>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+          <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+            <div class="form-group">
+              <%= f.label :email %> <span class="text-danger">*</span>
+              <%= f.email_field :email, autofocus: true, placeholder: "Input your email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+            </div>
+            <div class="form-group">
+              <%= button_tag class:"edu-btn btn-medium" do %>
+                Resend confirmation <i class="icon-4"></i>
+              <% end %>
+            </div>
+          <% end %>
+          <div class="form-group chekbox-area">
+            <%= link_to "Forgot your password?", new_user_password_path, class: "password-reset" %>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    <ul class="shape-group">
+      <li class="shape-1 scene"><%= image_tag ("about/shape-07.png"), alt: "Hara Academy" %></li>
+      <li class="shape-2 scene"><%= image_tag ("about/shape-13.png"), alt: "Hara Academy" %></li>
+      <li class="shape-3 scene"><%= image_tag ("counterup/shape-02.png"), alt: "Hara Academy" %></li>
+    </ul>
+    
   </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</section>
