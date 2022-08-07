@@ -4,11 +4,12 @@
       <div class="col-lg-6">
         <div class="login-form-box">
           <h3 class="title">Resend confirmation email</h3>
-
+          
           <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
             <div class="form-group">
-              <%= f.label :email %> <span class="text-danger">*</span>
+              <%= f.label :email do %> Email <span class="text-danger">*</span><% end %>
               <%= f.email_field :email, autofocus: true, placeholder: "Input your email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+              <span class="text-danger"><%= resource.errors[:email].first %></span>
             </div>
             <div class="form-group">
               <%= button_tag class:"edu-btn btn-medium" do %>

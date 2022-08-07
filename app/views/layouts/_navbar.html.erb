@@ -12,7 +12,7 @@
 									<div class="header-top-right">
 											<ul class="header-info">
 												<% if user_signed_in? %>
-													<li><%= current_user.first_name + " " + current_user.last_name %></li>
+													<li>Account setting</li>
 													<li class="header-btn"><%= button_to destroy_user_session_path, class: "edu-btn btn-secondary btn-medium", method: :delete do %>Log out <i class="icon-4"></i><% end %></li>
 												<% else %>
 													<li><%= link_to "Registration", new_user_registration_path %></li>

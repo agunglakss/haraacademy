@@ -6,17 +6,18 @@
 					<h3 class="title">Log in</h3>
 					<span class="text-danger"><%= alert %></span>
 					<p>Don’t have an account? <%= link_to "Registration", new_user_registration_path %></p>
-					<%= form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
-					
+					<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+						
 						<div class="form-group">
 								<%= f.label :email %> <span class="text-danger">*</span>
 								<%= f.email_field :email, autofocus: true, placeholder: "Input your email" %>
-								<small class="text-danger"><%= resource.errors[:email].first %></small>
+								<span class="text-danger"><%= resource.errors[:email].first %></span>
 						</div>
 						<div class="form-group">
 								<%= f.label :password %> <span class="text-danger">*</span>
 								<%= f.password_field :password, placeholder: "Input your password" %>
 								<span class="password-show"><i class="icon-76"></i></span>
+								<span class="text-danger"><%= resource.errors[:password].first %></span>
 						</div>
 						<div class="form-group chekbox-area">
 								<%= link_to "Forgot your password?", new_user_password_path, class: "password-reset" %>

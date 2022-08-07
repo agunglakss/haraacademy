@@ -78,8 +78,12 @@ STYLESHEET INDEXING
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Spartan:wght@400;500;600;700;800&display=swap");
 
 :root {
-    --color-dark-purple: #21225F;
-    --color-light-purple: #23244e;
+    --color-navy: #0a192f;
+    --color-light-navy: #112240;
+    --color--lightest-navy: #233554;
+    --color-slate: #8892b0;
+    --color-light-slate: #a8b2d1;
+    --color-lightest-slate: #ccd6f6;
     --color-primary: #1ab69d;
     --color-secondary: #ee4a62;
     --color-textSecondary: #ff5b5c;
@@ -195,6 +199,19 @@ STYLESHEET INDEXING
     .container {
         max-width: 1185px;
     }
+}
+
+/*===========================
+    Background Color 
+=============================*/
+.bg-color-dark {
+    background-color: var(--color-navy);
+    color: var(--color-slate);
+}
+
+.bg-color-light-dark {
+	background-color: var(--color--lightest-navy);
+	color: var(--color-slate);
 }
 
 /*===========================
@@ -1432,7 +1449,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: var(--font-primary);
-    color: var(--color-body);
+    color: var(--color-slate);
     font-weight: 400;
     margin: 0;
     padding: 0;
@@ -1485,7 +1502,6 @@ h6,
 .h6 {
     word-break: break-word;
     font-family: var(--font-secondary);
-    color: var(--color-heading);
 }
 
 h1,
@@ -12893,7 +12909,7 @@ body .tpd-size-medium .tpd-content {
 }
 
 .hero-banner .banner-content p {
-    color: var(--color-heading);
+    color: var(--color-white);
     font-size: 18px;
 }
 
@@ -13608,14 +13624,14 @@ body .tpd-size-medium .tpd-content {
     -ms-flex-pack: center;
     justify-content: center;
     z-index: 1;
-    -webkit-clip-path: polygon(0 0%, 100% 0%, 100% 92%, 0% 100%);
-    clip-path: polygon(0 0%, 100% 0%, 100% 92%, 0% 100%);
+    -webkit-clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .hero-banner.hero-style-4 {
-        -webkit-clip-path: polygon(0 0%, 100% 0%, 100% 92%, 0% 97%);
-        clip-path: polygon(0 0%, 100% 0%, 100% 92%, 0% 97%);
+			-webkit-clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0% 100%);
+			clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0% 100%);
     }
 }
 
@@ -13798,7 +13814,6 @@ body .tpd-size-medium .tpd-content {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.1);
     background: #FFFFFF;
     border-radius: 50px 10px 50px 10px;
 }
@@ -13863,7 +13878,6 @@ body .tpd-size-medium .tpd-content {
 .hero-banner.hero-style-4 .scroll-down-btn .scroll-btn {
     height: 200px;
     width: 200px;
-    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     display: -webkit-box;
     display: -webkit-flex;
@@ -13881,7 +13895,6 @@ body .tpd-size-medium .tpd-content {
         height: 50px;
         width: 50px;
         background-color: white;
-        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
         -webkit-box-align: center;
         -webkit-align-items: center;
         -ms-flex-align: center;
@@ -13914,7 +13927,7 @@ body .tpd-size-medium .tpd-content {
     -webkit-transition: var(--transition);
     transition: var(--transition);
     border-radius: 50%;
-    border: 1px solid #dfe7e9;
+    border: 1px solid var(--color--lightest-navy);
 }
 
 @media only screen and (max-width: 767px) {
@@ -19167,8 +19180,7 @@ body .tpd-size-medium .tpd-content {
     Header Styles  
 --------------------------*/
 .edu-header .header-mainmenu {
-    background-color: var(--color-white);
-    box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.05);
+    background-color: var(--color-navy);
     position: relative;
 }
 
@@ -19192,7 +19204,7 @@ body .tpd-size-medium .tpd-content {
     right: 0;
     left: 0;
     z-index: 99;
-    background-color: var(--color-white);
+    background-color: var(--color-navy);
     -webkit-animation: headerSticky .95s ease forwards;
     animation: headerSticky .95s ease forwards;
 }
@@ -19256,8 +19268,8 @@ body .tpd-size-medium .tpd-content {
 }
 
 .edu-header .header-category {
-    border-left: 1.5px solid #f2f2f2;
-    border-right: 1.5px solid #f2f2f2;
+    border-left: 1px solid var(--color--lightest-navy);
+    border-right: 1px solid var(--color--lightest-navy);
     margin-right: 10px;
 }
 
@@ -19415,7 +19427,7 @@ body .tpd-size-medium .tpd-content {
     content: "";
     height: 40px;
     width: 2px;
-    background-color: #f2f2f2;
+    background-color: #790c0c;
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -19663,7 +19675,7 @@ body .tpd-size-medium .tpd-content {
 }
 
 .mainmenu-nav .mainmenu > li > a {
-    color: var(--color-heading);
+    color: var(--color-light-slate);
     font-size: 15px;
     font-weight: 600;
     padding: 0 26px;
@@ -19729,7 +19741,7 @@ body .tpd-size-medium .tpd-content {
     padding: 20px 0 25px;
     -webkit-transition: 0.3s;
     transition: 0.3s;
-    background-color: var(--color-white);
+    background-color: var(--color--lightest-navy);
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.08);
 }
 
@@ -19742,7 +19754,7 @@ body .tpd-size-medium .tpd-content {
     font-weight: 600;
     padding: 5px 30px;
     display: block;
-    color: var(--color-heading);
+    color: var(--color-white);
 }
 
 .mainmenu-nav .mainmenu li.has-droupdown .submenu li a:hover {
@@ -19858,7 +19870,7 @@ body .tpd-size-medium .tpd-content {
     Header Top Styles  
 --------------------------*/
 .header-top-bar {
-    background-color: #1f2432;
+    background-color: var(--color-light-navy);
 }
 
 @media only screen and (max-width: 991px) {
@@ -19982,19 +19994,6 @@ body .tpd-size-medium .tpd-content {
     .header-top .header-info li {
         padding: 15px;
     }
-}
-
-.header-top .header-info li:after {
-    content: "";
-    height: 100%;
-    width: 1px;
-    background-color: rgba(255, 255, 255, 0.1);
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    right: 0;
 }
 
 .header-top .header-info li a {
@@ -20139,7 +20138,7 @@ body .tpd-size-medium .tpd-content {
 }
 
 .header-action .search-bar .input-group {
-    border: 1px solid #e5e5e5;
+    border: 1px solid var(--color-light-slate);
     border-radius: 4px;
 }
 
@@ -20159,9 +20158,8 @@ body .tpd-size-medium .tpd-content {
 
 .header-action .search-bar .input-group .search-btn {
     border: none;
-    background-color: transparent;
     font-size: 20px;
-    color: var(--color-heading);
+    color: var(--color--lightest-navy);
     padding: 0 20px;
     -webkit-transition: var(--transition);
     transition: var(--transition);
