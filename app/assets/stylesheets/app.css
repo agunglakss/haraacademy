@@ -20185,8 +20185,8 @@ body .tpd-size-medium .tpd-content {
     background-color: transparent;
     border: none;
     padding: 0;
-    color: var(--color-heading);
-    font-size: 15px;
+    color: var(--color-white);
+    font-size: 20px;
     line-height: 1;
     -webkit-transition: var(--transition);
     transition: var(--transition);
