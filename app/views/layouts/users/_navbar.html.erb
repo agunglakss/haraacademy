@@ -23,7 +23,6 @@
 					</div>
 			</div>
 	</div>
-	<div id="edu-sticky-placeholder"></div>
 	<div class="header-mainmenu">
 			<div class="container-fluid">
 					<div class="header-navbar">
@@ -39,8 +38,9 @@
 															<li class="has-droupdown">
 																	<a href="#"><i class="icon-1"></i>Category</a>
 																	<ul class="submenu">
-																			<li><a href="course-one.html">Design</a></li>
-																			<li><a href="course-one.html">Development</a></li>
+																			<% Category.order(name: :asc).pluck(:name).each do |category_name| %>
+																				<li><a href="#"><%= category_name %></a></li>
+																			<% end %>
 																	</ul>
 															</li>
 													</ul>
@@ -66,16 +66,11 @@
 							</div>
 							<div class="header-right">
 									<ul class="header-action">
-											<li class="search-bar">
+											<li class="search-bar d-block d-xl">
 													<div class="input-group">
 															<input type="text" class="form-control" placeholder="Search">
 															<button class="search-btn" type="button"><i class="icon-2"></i></button>
 													</div>
-											</li>
-											<li class="icon search-icon">
-													<a href="javascript:void(0)" class="search-trigger">
-															<i class="icon-2"></i>
-													</a>
 											</li>
 											<li class="mobile-menu-bar d-block d-xl-none">
 													<button class="hamberger-button">
@@ -189,22 +184,5 @@
 					</ul>
 			</div>
 	</div>
-	<!-- Start Search Popup  -->
-	<div class="edu-search-popup">
-			<div class="content-wrap">
-					<div class="site-logo">
-							<%= image_tag ("logo/logo-white.png"), alt: "Hara Academy", class: "logo-light" %>
-					</div>
-					<div class="close-button">
-							<button class="close-trigger"><i class="icon-73"></i></button>
-					</div>
-					<div class="inner">
-							<form class="search-form" action="#">
-									<input type="text" class="edublink-search-popup-field" placeholder="Search Here...">
-									<button class="submit-button"><i class="icon-2"></i></button>
-							</form>
-					</div>
-			</div>
-	</div>
-	<!-- End Search Popup  -->
+	
 </header>

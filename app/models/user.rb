@@ -10,7 +10,8 @@ class User < ApplicationRecord
   validates_presence_of :last_name, presence: true, :message => "Last name can't be blank"
   validates_presence_of :phone_number, presence: true, :message => "Phone number can't be blank."
 
-  def full_name
-    "#{first_name} #{last_name}"
+  def self.full_name(current_user)
+    current_user.first_name + " " + current_user.last_name
   end
+
 end

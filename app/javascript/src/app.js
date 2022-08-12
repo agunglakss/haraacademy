@@ -15,7 +15,6 @@
 
         methods: function (e) {
             eduJs.bgMarque();
-            // eduJs.salActive();
             eduJs.stickyHeaderMenu();
             eduJs.magnigyPopup();
             // eduJs.slickSlider();
@@ -33,8 +32,6 @@
             // eduJs.ToolTip();
             eduJs.contactForm();
             // eduJs.sitePreloader();
-            // eduJs.countdownInit('.countdown', '2022/12/30');
-            // eduJs.countdownInit('.coming-countdown', '2022/12/30');
         },
 
         bgMarque: function () {
@@ -49,28 +46,28 @@
             });
         },
 
-        sitePreloader: function () {
-            // $( window ).on( 'load', function () {
-            //     setTimeout(() => {
-            //         $( '#edublink-preloader' ).addClass( 'loaded' );
-            //     }, 1000);
+        // sitePreloader: function () {
+        //     // $( window ).on( 'load', function () {
+        //     //     setTimeout(() => {
+        //     //         $( '#edublink-preloader' ).addClass( 'loaded' );
+        //     //     }, 1000);
                 
-            // });
+        //     // });
 
-            jQuery(window).load(function() {
-                jQuery("#edublink-preloader").fadeOut();
-            });
+        //     jQuery(window).load(function() {
+        //         jQuery("#edublink-preloader").fadeOut();
+        //     });
     
                 
-            // Close The Preloader
-            $('.preloader-close-btn').on('click', function (e) {
-                e.preventDefault();
-                jQuery("#edublink-preloader").fadeOut();
-                // if ( ! ($( '#edublink-preloader' ).hasClass( 'loaded' ) ) ) {
-                //     $( '#edublink-preloader' ).addClass( 'loaded' );
-                // }
-            });
-        },
+        //     // Close The Preloader
+        //     $('.preloader-close-btn').on('click', function (e) {
+        //         e.preventDefault();
+        //         jQuery("#edublink-preloader").fadeOut();
+        //         // if ( ! ($( '#edublink-preloader' ).hasClass( 'loaded' ) ) ) {
+        //         //     $( '#edublink-preloader' ).addClass( 'loaded' );
+        //         // }
+        //     });
+        // },
 
         ToolTip: function () {
             Tipped.create(
