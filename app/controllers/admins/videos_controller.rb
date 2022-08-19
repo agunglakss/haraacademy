@@ -15,10 +15,10 @@ class Admins::VideosController < AdminsController
   def create
     @video = Video.new(video_params)
 
-    if current_user
-      @video.created_by = set_current_user
-      @video.updated_by = set_current_user
-    end
+    # if current_user
+    #   @video.created_by = set_current_user
+    #   @video.updated_by = set_current_user
+    # end
     respond_to do |format|
       if @video.save
         format.html { redirect_to admins_videos_path, notice: "Video was successfully created." }
@@ -29,9 +29,9 @@ class Admins::VideosController < AdminsController
   end
 
   def update
-    if current_user
-      @video.updated_by = set_current_user
-    end
+    # if current_user
+    #   @video.updated_by = set_current_user
+    # end
 
     respond_to do |format|
       if @video.update(video_params)
