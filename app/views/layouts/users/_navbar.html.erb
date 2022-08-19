@@ -56,11 +56,8 @@
 													<li><a href="#">Courses</a>
 													</li>
 
-													<li><a href="#">About us</a>
-													</li>
-
-													<li><a href="#">Contact</a>
-													</li>
+													<li><%= link_to "About us", about_path %></a></li>
+													<li><%= link_to "Contact us", contact_path %></a></li>
 											</ul>
 									</nav>
 							</div>
@@ -107,8 +104,8 @@
 									</ul>
 							</li>
 							<li><a href="#">Courses</a></li>
-							<li><a href="#">About us</a></li>
-							<li><a href="#">Contact</a></li>
+							<li><%= link_to "About us", about_path %></a></li>
+							<li><%= link_to "Contact us", contact_path %></a></li>
 							<% if user_signed_in? %>
 								<li><a href="#">Account setting</a></li>
 								<li class="header-btn"><%= button_to destroy_user_session_path, class: "mt-2 edu-btn btn-secondary btn-medium", method: :delete do %>Log out <i class="icon-4"></i><% end %></li>

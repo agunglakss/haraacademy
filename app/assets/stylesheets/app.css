@@ -3169,28 +3169,15 @@ Scroll Down Button Animation
     Breadcrumb
 ---------------------------*/
 .edu-breadcrumb-area {
-    background-color: #f5f9fa;
-    padding: 95px 0 85px;
+    background-color: var(--color-navy);
+    color: var(--color-white);
     position: relative;
     z-index: 1;
     overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    .edu-breadcrumb-area {
-        padding: 70px 0 60px;
-    }
-}
-
-@media only screen and (max-width: 767px) {
-    .edu-breadcrumb-area {
-        padding: 55px 0 45px;
-    }
-}
-
-.edu-breadcrumb-area .breadcrumb-inner {
-    text-align: center;
-}
 
 .edu-breadcrumb-area .page-title .pre-title {
     margin-bottom: 15px;
@@ -3234,13 +3221,13 @@ Scroll Down Button Animation
 }
 
 .edu-breadcrumb-area .edu-breadcrumb li.breadcrumb-item {
-    color: var(--color-heading);
+    color: var(--color-white);
     font-size: 16px;
     font-weight: var(--p-medium);
 }
 
 .edu-breadcrumb-area .edu-breadcrumb li.breadcrumb-item a {
-    color: var(--color-heading);
+    color: var(--color-white);
 }
 
 .edu-breadcrumb-area .edu-breadcrumb li.breadcrumb-item a:hover {
@@ -3255,7 +3242,7 @@ Scroll Down Button Animation
     font-size: 16px;
     font-weight: var(--p-bold);
     margin: 0 10px;
-    color: var(--color-heading);
+    color: var(--color-white);
     position: relative;
     display: inline-block;
     top: 2px;
@@ -3563,8 +3550,6 @@ Scroll Down Button Animation
 .breadcrumb-style-5 {
     padding: 0;
     padding-top: 18px;
-    background: -webkit-linear-gradient(right, #f5f1eb 0%, rgba(245, 241, 235, 0.3) 100%);
-    background: linear-gradient(-90deg, #f5f1eb 0%, rgba(245, 241, 235, 0.3) 100%);
 }
 
 .breadcrumb-style-5 .edu-breadcrumb {
@@ -7959,7 +7944,7 @@ body.sal-disabled [data-sal|='flip'] {
     box-shadow: var(--shadow-darker);
     background-color: var(--color-white);
     border-radius: 5px;
-    margin-bottom: -80px;
+    margin-bottom: 50px;
     position: relative;
 }
 
