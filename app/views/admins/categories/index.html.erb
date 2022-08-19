@@ -1,6 +1,7 @@
-<section class="account-page-area section-gap-equal">
+<section class="account-page-area">
   <div class="container position-relative">
-    <div class="row g-5 justify-content-center">
+    <div class="row g-5 justify-content-center mt-3 mb-5">
+
       <% if notice %>
       <div class="col-lg-12">
         <div class="alert alert-success" role="alert">
@@ -8,51 +9,61 @@
         </div>
       </div> 
       <% end %>
+      
       <div class="col-lg-12">
-        <div class="login-form-box">
-          <h3 class="title">Categories</h3>
-            <%= link_to "New Category", new_admins_category_path, class: "btn btn-outline-primary btn-lg mt-5 mb-5" %>
-            
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col">Category name</th>
-                  <th scope="col">Icon</th>
-                  <th scope="col">Color</th>
-                  <th scope="col">Sequence</th>
-                  <th scope="col">Created by</th>
-                  <th scope="col">Updated by</th>
-                  <th scope="col">Created at</th>
-                  <th scope="col">Updated at</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-              <% @categories.each do |category| %>
-                <tr>
-                  <th><%= category.name %></th>
-                  <th><%= category.icon %></th>
-                  <th><%= category.color %></th>
-                  <th><%= category.sequence %></th>
-                  <th><%= category.created_by %></th>
-                  <th><%= category.updated_by %></th>
-                  <th><%= category.created_at %></th>
-                  <th><%= category.updated_at %></th>
-                  <th><%= link_to "Edit", edit_admins_category_path(category) %> | <%= button_to "Delete", admins_category_path(category), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %></th>
-                </tr>
-              <% end %>
-              </tbody>
-            </table>
-          
+        <h1 class="text-dark">Categories</h1>
+        <div class="login-form-box shadow">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title text-dark"><%= link_to new_admins_category_path, class: "edu-btn btn-medium mt-3 mb-3" do %>Create New Category
+                <i class="icon-4"></i>
+                <% end %>
+              </h4>
+              <table class="table table-hover table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Category name</th>
+                    <th scope="col">Icon</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Sequence</th>
+                    <th scope="col">Created by</th>
+                    <th scope="col">Updated by</th>
+                    <th scope="col">Created at</th>
+                    <th scope="col">Updated at</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <% @categories.each do |category| %>
+                  <tr>
+                    <th><%= category.name %></th>
+                    <th><%= category.icon %></th>
+                    <th><%= category.color %></th>
+                    <th><%= category.sequence %></th>
+                    <th><%= category.created_by %></th>
+                    <th><%= category.updated_by %></th>
+                    <th><%= category.created_at %></th>
+                    <th><%= category.updated_at %></th>
+                    <th><%= link_to "Edit", edit_admins_category_path(category), class: "btn btn-outline-warning btn-lg mb-2" %> <%= button_to "Delete", admins_category_path(category), method: :delete, class: "btn btn-outline-danger btn-lg", form: { data: { turbo_confirm: "Are you sure?" } } %></th>
+                  </tr>
+                <% end %>
+                </tbody>
+              </table>
+              <nav aria-label="Page navigation example">
+                <ul class="pagination pagination-lg">
+                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+              </nav>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-      
-    <ul class="shape-group">
-      <li class="shape-1 scene"><%= image_tag ("about/shape-07.png"), alt: "Hara Academy" %></li>
-      <li class="shape-2 scene"><%= image_tag ("about/shape-13.png"), alt: "Hara Academy" %></li>
-      <li class="shape-3 scene"><%= image_tag ("counterup/shape-02.png"), alt: "Hara Academy" %></li>
-    </ul>
     
   </div>
 </section>

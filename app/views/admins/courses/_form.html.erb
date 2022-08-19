@@ -1,0 +1,62 @@
+<%= link_to admins_courses_path, class: "edu-btn btn-medium mt-3" do %>Back to courses <i class="icon-4"></i><% end %>
+
+<%= form_with model: course, url: url, class: "mt-5" do |f| %>
+
+    <div class="mb-3 form-group">
+      <%= f.label :title do %>Course Title <span class="text-danger">*</span><% end %>
+      <%= f.text_field :title, placeholder: "Input title course", autofocus: true,  class: "form-control" %>
+      <span class="text-danger"><%= course.errors[:title].first %></span>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= f.label :category_id do %>Courses Category <span class="text-danger">*</span><% end %>
+      <%= f.collection_select :category_id, Category.order(:name), :id, :name, include_blank: "Select category", class: "form-control" %>
+      <span class="text-danger"><%= course.errors[:category_id].first %></span>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= f.label :sort do %>Courses Type <span class="text-danger">*</span><% end %>
+      <%= f.select :sort, [["Playback", "playback"], ["Live", "live"]], class: "form-control" %>
+      <span class="text-danger"><%= course.errors[:sort].first %></span>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= f.label :price do %>Price <span class="text-danger">*</span><% end %>
+      <%= f.number_field :price, placeholder: "Input pricing course", autofocus: true,  class: "form-control" %>
+      <span class="text-danger"><%= course.errors[:price].first %></span>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= f.label :discount do %>Discount<% end %>
+      <%= f.number_field :discount, placeholder: "", autofocus: true,  class: "form-control" %>
+      <span class="text-danger"><%= course.errors[:discount].first %></span>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= f.label :speaker_id do %>Courses Speaker <span class="text-danger">*</span><% end %>
+      <%= f.collection_select :speaker_id, Speaker.order(:full_name), :id, :full_name, include_blank: "Select spekaer", class: "form-control" %>
+      <span class="text-danger"><%= course.errors[:speaker_id].first %></span>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= f.label :status do %>Status <span class="text-danger">*</span><% end %>
+      <%= f.select :status, [["Draft", "draft"], ["Published", "published"]], class: "form-control" %>
+      <span class="text-danger"><%= course.errors[:status].first %></span>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= f.label :image do %>Course Thumbnail <span class="text-danger">*</span><% end %>
+      <%= f.file_field :image,  class: "form-control" %>
+      <span class="text-danger"><%= course.errors[:image].first %></span>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= f.label :body do %>Course Description  <span class="text-danger">*</span><% end %>
+      <%= f.rich_text_area :body,  class: "form-control" %>
+      <span class="text-danger"><%= course.errors[:body].first %></span>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= button_tag :Save, class: "edu-btn btn-medium"%>
+    </div>
+<% end %>

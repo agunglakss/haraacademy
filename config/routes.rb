@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   get 'admins', to: 'admins#index'
   
   namespace :admins do
-    resources :categories
     resources :dashboard
+    resources :categories
+    resources :speakers
+    resources :courses
+    resources :videos
   end
 end

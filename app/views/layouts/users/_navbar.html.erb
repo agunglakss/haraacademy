@@ -29,7 +29,7 @@
 							<div class="header-brand">
 									<div class="logo">
 											<a href="/">
-													<%= image_tag ("logo/logo-white.png"), alt: "Hara Academy", class: "logo-light" %>
+													<%= image_tag ("logo/haraacademy_white.png"), alt: "Hara Academy", class: "logo-light" %>
 											</a>
 									</div>
 									<div class="header-category">
@@ -97,90 +97,26 @@
 							</div>
 					</div>
 					<ul class="mainmenu">
-							<li class="has-droupdown"><a href="#">Home</a>
+							<li><a href="/">Home</a></li>
+							<li class="has-droupdown">
+									<a href="#">Category</a>
 									<ul class="submenu">
-											<li><a href="index.html">EduBlink Education</a></li>
-											<li><a href="index-distant-learning.html">Distant Learning</a></li>
-											<li><a href="index-university.html">University</a></li>
-											<li><a href="index-online-academy.html">Online Academy</a></li>
-											<li><a href="index-kitchen.html">Kitchen Coach</a></li>
-											<li><a href="index-yoga.html">Yoga Instructor</a></li>
-											<li><a href="index-kindergarten.html">Kindergarten</a></li>
-											<li><a href="index-landing.html">Landing Demo</a></li>
+											<% Category.order(name: :asc).pluck(:name).each do |category_name| %>
+												<li><a href="#"><%= category_name %></a></li>
+											<% end %>
 									</ul>
 							</li>
-							<li class="has-droupdown"><a href="#">Pages</a>
-									<ul class="mega-menu">
-											<li>
-													<h6 class="menu-title">Inner Pages</h6>
-													<ul class="submenu">
-															<li><a href="about-one.html">About Us 1</a></li>
-															<li><a href="about-two.html">About Us 2</a></li>
-															<li><a href="about-three.html">About Us 3</a></li>
-															<li><a href="team-one.html">Instructor 1</a></li>
-															<li><a href="team-two.html">Instructor 2</a></li>
-															<li><a href="team-three.html">Instructor 3</a></li>
-															<li><a href="team-details.html">Instructor Profile</a></li>
-															<li><a href="faq.html">Faq's</a></li>
-															<li><a href="404.html">404 Error</a></li>
-															<li><a href="coming-soon.html">Coming Soon</a></li>
-													</ul>
-											</li>
-											<li>
-													<h6 class="menu-title">Inner Pages</h6>
-													<ul class="submenu">
-															<li><a href="gallery-grid.html">Gallery Grid</a></li>
-															<li><a href="gallery-masonry.html">Gallery Masonry</a></li>
-															<li><a href="event-grid.html">Event Grid</a></li>
-															<li><a href="event-list.html">Event List</a></li>
-															<li><a href="event-details.html">Event Details</a></li>
-															<li><a href="pricing-table.html">Pricing Table</a></li>
-															<li><a href="purchase-guide.html">Purchase Guide</a></li>
-															<li><a href="privacy-policy.html">Privacy Policy</a></li>
-															<li><a href="terms-condition.html">Terms & Condition</a></li>
-															<li><a href="my-account.html">Sign In</a></li>
-													</ul>
-											</li>
-											<li>
-													<h6 class="menu-title">Shop Pages</h6>
-													<ul class="submenu">
-															<li><a href="shop.html">Shop</a></li>
-															<li><a href="product-details.html">Product Details</a></li>
-															<li><a href="cart.html">Cart</a></li>
-															<li><a href="wishlist.html">Wishlist</a></li>
-															<li><a href="checkout.html">Checkout</a></li>
-													</ul>
-											</li>
-									</ul>
-							</li>
-
-							<li class="has-droupdown"><a href="#">Courses</a>
-									<ul class="submenu">
-											<li><a href="course-one.html">Course Style 1</a></li>
-											<li><a href="course-two.html">Course Style 2</a></li>
-											<li><a href="course-three.html">Course Style 3</a></li>
-											<li><a href="course-four.html">Course Style 4</a></li>
-											<li><a href="course-five.html">Course Style 5</a></li>
-											<li><a href="course-details.html">Course Details 1</a></li>
-											<li><a href="course-details-2.html">Course Details 2</a></li>
-											<li><a href="course-details-3.html">Course Details 3</a></li>
-									</ul>
-							</li>
-
-							<li class="has-droupdown"><a href="#">Blog</a>
-									<ul class="submenu">
-											<li><a href="blog-standard.html">Blog Standard</a></li>
-											<li><a href="blog-masonry.html">Blog Masonry</a></li>
-											<li><a href="blog-list.html">Blog List</a></li>
-											<li><a href="blog-details.html">Blog Details</a></li>
-									</ul>
-							</li>
-							<li class="has-droupdown"><a href="#">Contact</a>
-									<ul class="submenu">
-											<li><a href="contact-us.html">Contact Us</a></li>
-											<li><a href="contact-me.html">Contact Me</a></li>
-									</ul>
-							</li>
+							<li><a href="#">Courses</a></li>
+							<li><a href="#">About us</a></li>
+							<li><a href="#">Contact</a></li>
+							<% if user_signed_in? %>
+								<li><a href="#">Account setting</a></li>
+								<li class="header-btn"><%= button_to destroy_user_session_path, class: "mt-2 edu-btn btn-secondary btn-medium", method: :delete do %>Log out <i class="icon-4"></i><% end %></li>
+							<% else %>
+								<li><%= link_to "Register", new_user_registration_path %></li>
+								<li><%= link_to "Login", new_user_session_path %></li>
+							<% end %>
+							
 					</ul>
 			</div>
 	</div>

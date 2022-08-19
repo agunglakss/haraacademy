@@ -1,0 +1,26 @@
+<%= link_to admins_videos_path, class: "edu-btn btn-medium mt-3" do %>Back to videos <i class="icon-4"></i><% end %>
+
+<%= form_with model: video, url: url, class: "mt-5" do |f| %>
+
+    <div class="mb-3 form-group">
+      <%= f.label :subject do %>Title video <span class="text-danger">*</span><% end %>
+      <%= f.text_field :subject, placeholder: "Input title video", autofocus: true,  class: "form-control" %>
+      <span class="text-danger"><%= video.errors[:subject].first %></span>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= f.label :course_id do %>Courses title <span class="text-danger">*</span><% end %>
+      <%= f.collection_select :course_id, Course.order(:title), :id, :title, include_blank: "Select course title", class: "form-control" %>
+      <span class="text-danger"><%= video.errors[:course_id].first %></span>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= f.label :url_video do %>URL video <span class="text-danger">*</span><% end %>
+      <%= f.text_field :url_video, placeholder: "Input url video", autofocus: true,  class: "form-control" %>
+      <span class="text-danger"><%= video.errors[:url_video].first %></span>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= button_tag :submit, class: "edu-btn btn-medium"%>
+    </div>
+<% end %>

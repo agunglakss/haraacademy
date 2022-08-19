@@ -21,7 +21,7 @@ class Admins::CategoriesController < AdminsController
     end
     respond_to do |format|
       if @category.save
-        format.html { redirect_to admins_categories_path, notice: "Category was successfully updated." }
+        format.html { redirect_to admins_categories_path, notice: "Category was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

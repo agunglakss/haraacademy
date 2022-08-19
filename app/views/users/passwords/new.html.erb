@@ -3,12 +3,12 @@
     <div class="row g-5 justify-content-center">
       <div class="col-lg-6">
         <div class="login-form-box">
-          <h3 class="title">Forgot your password?</h3>
+          <h3 class="title">Reset Password</h3>
           <span class="text-danger"><%= alert %></span>
           <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
             <div class="form-group">
               <%= f.label :email do %> Email <span class="text-danger">*</span><% end %>
-              <%= f.email_field :email, autofocus: true %>
+              <%= f.email_field :email, autofocus: true, placeholder: 'Enter your Email and instructions will be sent to you!' %>
               <span class="text-danger"><%= resource.errors[:email].first %></span>
             </div>
             <div class="form-group">

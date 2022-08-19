@@ -9,3 +9,5 @@ import "./src/jquery/jquery"
 // Custom JS
 import "./src/app"
 
+import "trix"
+import "@rails/actiontext"

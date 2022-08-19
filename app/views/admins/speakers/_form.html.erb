@@ -1,0 +1,26 @@
+<%= link_to admins_speakers_path, class: "edu-btn btn-medium mt-3" do %>Back to speakers <i class="icon-4"></i><% end %>
+
+<%= form_with model: speaker, url: url, class: "mt-5" do |f| %>
+
+    <div class="mb-3 form-group">
+      <%= f.label :full_name do %>Speaker name <span class="text-danger">*</span><% end %>
+      <%= f.text_field :full_name, placeholder: "Input full name speaker", autofocus: true,  class: "form-control" %>
+      <span class="text-danger"><%= speaker.errors[:full_name].first %></span>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= f.label :title do %>Title <span class="text-danger">*</span><% end %>
+      <%= f.text_field :title, placeholder: "Input title speaker", autofocus: true,  class: "form-control" %>
+      <span class="text-danger"><%= speaker.errors[:title].first %></span>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= f.label :description do %>Description  <span class="text-danger">*</span><% end %>
+      <%= f.rich_text_area :body,  class: "form-control" %>
+      <span class="text-danger"><%= speaker.errors[:body].first %></span>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= button_tag :submit, class: "edu-btn btn-medium"%>
+    </div>
+<% end %>
