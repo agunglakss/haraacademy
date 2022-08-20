@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   get 'home', to: 'home#index'
   get 'about', to: 'about#index'
   get 'contact', to: 'contact#index'
+
+  # course routing
   get 'courses', to: 'course#index'
+  get 'courses/:slug', to: 'course#show'
 
   devise_for :users, controllers: { passwords: 'passwords' }
   get 'admins', to: 'admins#index'

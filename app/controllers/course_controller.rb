@@ -15,4 +15,7 @@ class CourseController < ApplicationController
     # total kursus
     @total_course = @courses.count
   end
+
+  def show
+  end
 end
