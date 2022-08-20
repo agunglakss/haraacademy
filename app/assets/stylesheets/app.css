@@ -10120,6 +10120,8 @@ body .tpd-size-medium .tpd-content {
 
 .edu-sorting-area .showing-text {
     margin-bottom: 0;
+    color: var(--color-white);
+    font-weight: bold;
 }
 
 .edu-sorting-area .showing-text span {
@@ -10247,7 +10249,12 @@ body .tpd-size-medium .tpd-content {
 
 .edu-sorting-area .sorting-right .edu-sorting .edu-select {
     padding-left: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     width: 200px;
+    background-color: var(--color-white);
+    color: var(--color--lightest-navy);
+    font-weight: medium;
 }
 
 /*-------------------
