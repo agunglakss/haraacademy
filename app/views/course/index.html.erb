@@ -1,0 +1,310 @@
+<div class="edu-breadcrumb-area">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item text-white"><a href="#">Home</a></li>
+        <li class="breadcrumb-item text-white active" aria-current="page">Courses</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<div class="edu-course-area course-area-1 section-gap-equal">
+	<div class="container">
+		<div class="row gx-5">
+			<div class="col-lg-12">
+				<div class="edu-sorting-area">
+						<div class="sorting-left">
+								<h6 class="showing-text">We found <span>71</span> courses available for you</h6>
+						</div>
+						<div class="sorting-right">
+							<div class="edu-sorting">
+								<div class="icon"><i class="icon-55"></i></div>
+								<select class="edu-select">
+									<option>Filters</option>
+									<option>Low To High</option>
+									<option>High Low To</option>
+									<option>Last Viewed</option>
+								</select>
+							</div>
+						</div>
+				</div>
+			</div>
+			
+			<div class="col-lg-3">
+				<div class="edu-course-sidebar">
+					<div class="edu-course-widget widget-category">
+						<div class="inner">
+							<h5 class="widget-title">Filter by Categories</h5>
+							<div class="content">
+							<% @categories.each do |category| %>
+								<div class="edu-form-check">
+									<input type="checkbox" id="<%= category.name%>">
+									<label for="<%= category.name%>"><%= category.name%> <span>(7)</span></label>
+								</div>
+							<% end %>
+							</div>
+						</div>
+					</div>
+					<div class="edu-course-widget widget-instructor">
+							<div class="inner">
+								<h5 class="widget-title">Speaker</h5>
+								<div class="content">
+								<% @speakers.each do |speaker| %>
+									<div class="edu-form-check">
+										<input type="checkbox" id="<%= speaker.full_name%>">
+										<label for="<%= speaker.full_name%>"><%= speaker.full_name%> <span>(2)</span></label>
+									</div>
+								<% end %>
+								</div>
+							</div>
+					</div>
+					<div class="edu-course-widget widget-price">
+							<div class="inner">
+									<h5 class="widget-title">Price</h5>
+									<div class="content">
+											<div class="edu-form-check">
+													<input type="checkbox" id="price-check1">
+													<label for="price-check1">All Price</label>
+											</div>
+											<div class="edu-form-check">
+													<input type="checkbox" id="price-check2">
+													<label for="price-check2">Free</label>
+											</div>
+											<div class="edu-form-check">
+													<input type="checkbox" id="price-check3">
+													<label for="price-check3">Low to High</label>
+											</div>
+											<div class="edu-form-check">
+													<input type="checkbox" id="price-check4">
+													<label for="price-check4">High to Low</label>
+											</div>
+											<div class="edu-form-check">
+													<input type="checkbox" id="price-check5">
+													<label for="price-check5">Paid</label>
+											</div>
+									</div>
+							</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-9">
+				<div class="row">
+					<div class="col-md-6 col-lg-4 col-xl-4 mb-4">
+						<div class="edu-course course-style-1 hover-button-bg-white">
+							<div class="inner">
+								<div class="thumbnail">
+									<a href="course-details.html">
+										<%= image_tag "course/course-07.jpg", alt: "Course Meta"%>
+									</a>
+								</div>
+								<div class="content">
+									<span class="course-level">Beginner</span>
+									<h6 class="title">
+											<a href="#">The Complete Camtasia Course for Content Creators</a>
+									</h6>
+									<div class="course-price">$49.00</div>
+									<ul class="course-meta">
+											<li><i class="icon-24"></i>15 Lessons</li>
+									</ul>
+									<a href="course-details.html" class="edu-btn btn-secondary btn-small">Enrolled <i class="icon-4"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 col-xl-4 mb-4">
+						<div class="edu-course course-style-1 hover-button-bg-white">
+							<div class="inner">
+								<div class="thumbnail">
+									<a href="course-details.html">
+										<%= image_tag "course/course-07.jpg", alt: "Course Meta"%>
+									</a>
+								</div>
+								<div class="content">
+									<span class="course-level">Beginner</span>
+									<h6 class="title">
+											<a href="#">The Complete Camtasia Course for Content Creators</a>
+									</h6>
+									<div class="course-price">$49.00</div>
+									<ul class="course-meta">
+											<li><i class="icon-24"></i>15 Lessons</li>
+									</ul>
+									<a href="course-details.html" class="edu-btn btn-secondary btn-small">Enrolled <i class="icon-4"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 col-xl-4 mb-4">
+						<div class="edu-course course-style-1 hover-button-bg-white">
+							<div class="inner">
+								<div class="thumbnail">
+									<a href="course-details.html">
+										<%= image_tag "course/course-07.jpg", alt: "Course Meta"%>
+									</a>
+								</div>
+								<div class="content">
+									<span class="course-level">Beginner</span>
+									<h6 class="title">
+											<a href="#">The Complete Camtasia Course for Content Creators</a>
+									</h6>
+									<div class="course-price">$49.00</div>
+									<ul class="course-meta">
+											<li><i class="icon-24"></i>15 Lessons</li>
+									</ul>
+									<a href="course-details.html" class="edu-btn btn-secondary btn-small">Enrolled <i class="icon-4"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 col-xl-4 mb-4">
+						<div class="edu-course course-style-1 hover-button-bg-white">
+							<div class="inner">
+								<div class="thumbnail">
+									<a href="course-details.html">
+										<%= image_tag "course/course-07.jpg", alt: "Course Meta"%>
+									</a>
+								</div>
+								<div class="content">
+									<span class="course-level">Beginner</span>
+									<h6 class="title">
+											<a href="#">The Complete Camtasia Course for Content Creators</a>
+									</h6>
+									<div class="course-price">$49.00</div>
+									<ul class="course-meta">
+											<li><i class="icon-24"></i>15 Lessons</li>
+									</ul>
+									<a href="course-details.html" class="edu-btn btn-secondary btn-small">Enrolled <i class="icon-4"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 col-xl-4 mb-4">
+						<div class="edu-course course-style-1 hover-button-bg-white">
+							<div class="inner">
+								<div class="thumbnail">
+									<a href="course-details.html">
+										<%= image_tag "course/course-07.jpg", alt: "Course Meta"%>
+									</a>
+								</div>
+								<div class="content">
+									<span class="course-level">Beginner</span>
+									<h6 class="title">
+											<a href="#">The Complete Camtasia Course for Content Creators</a>
+									</h6>
+									<div class="course-price">$49.00</div>
+									<ul class="course-meta">
+											<li><i class="icon-24"></i>15 Lessons</li>
+									</ul>
+									<a href="course-details.html" class="edu-btn btn-secondary btn-small">Enrolled <i class="icon-4"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 col-xl-4 mb-4">
+						<div class="edu-course course-style-1 hover-button-bg-white">
+							<div class="inner">
+								<div class="thumbnail">
+									<a href="course-details.html">
+										<%= image_tag "course/course-07.jpg", alt: "Course Meta"%>
+									</a>
+								</div>
+								<div class="content">
+									<span class="course-level">Beginner</span>
+									<h6 class="title">
+											<a href="#">The Complete Camtasia Course for Content Creators</a>
+									</h6>
+									<div class="course-price">$49.00</div>
+									<ul class="course-meta">
+											<li><i class="icon-24"></i>15 Lessons</li>
+									</ul>
+									<a href="course-details.html" class="edu-btn btn-secondary btn-small">Enrolled <i class="icon-4"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 col-xl-4 mb-4">
+						<div class="edu-course course-style-1 hover-button-bg-white">
+							<div class="inner">
+								<div class="thumbnail">
+									<a href="course-details.html">
+										<%= image_tag "course/course-07.jpg", alt: "Course Meta"%>
+									</a>
+								</div>
+								<div class="content">
+									<span class="course-level">Beginner</span>
+									<h6 class="title">
+											<a href="#">The Complete Camtasia Course for Content Creators</a>
+									</h6>
+									<div class="course-price">$49.00</div>
+									<ul class="course-meta">
+											<li><i class="icon-24"></i>15 Lessons</li>
+									</ul>
+									<a href="course-details.html" class="edu-btn btn-secondary btn-small">Enrolled <i class="icon-4"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 col-xl-4 mb-4">
+						<div class="edu-course course-style-1 hover-button-bg-white">
+							<div class="inner">
+								<div class="thumbnail">
+									<a href="course-details.html">
+										<%= image_tag "course/course-07.jpg", alt: "Course Meta"%>
+									</a>
+								</div>
+								<div class="content">
+									<span class="course-level">Beginner</span>
+									<h6 class="title">
+											<a href="#">The Complete Camtasia Course for Content Creators</a>
+									</h6>
+									<div class="course-price">$49.00</div>
+									<ul class="course-meta">
+											<li><i class="icon-24"></i>15 Lessons</li>
+									</ul>
+									<a href="course-details.html" class="edu-btn btn-secondary btn-small">Enrolled <i class="icon-4"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 col-xl-4 mb-4">
+						<div class="edu-course course-style-1 hover-button-bg-white">
+							<div class="inner">
+								<div class="thumbnail">
+									<a href="course-details.html">
+										<%= image_tag "course/course-07.jpg", alt: "Course Meta"%>
+									</a>
+								</div>
+								<div class="content">
+									<span class="course-level">Beginner</span>
+									<h6 class="title">
+											<a href="#">The Complete Camtasia Course for Content Creators</a>
+									</h6>
+									<div class="course-price">$49.00</div>
+									<ul class="course-meta">
+											<li><i class="icon-24"></i>15 Lessons</li>
+									</ul>
+									<a href="course-details.html" class="edu-btn btn-secondary btn-small">Enrolled <i class="icon-4"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					
+				</div>
+
+			</div>
+			
+			
+		</div>
+
+		<ul class="edu-pagination ">
+				<li><a href="#" aria-label="Previous"><i class="icon-west"></i></a></li>
+				<li class="active"><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li class="more-next"><a href="#"></a></li>
+				<li><a href="#">8</a></li>
+				<li><a href="#" aria-label="Next"><i class="icon-east"></i></a></li>
+		</ul>
+
+	</div>
+</div>
