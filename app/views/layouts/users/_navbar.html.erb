@@ -39,7 +39,7 @@
 																	<a href="#"><i class="icon-1"></i>Category</a>
 																	<ul class="submenu">
 																			<% Category.order(name: :asc).pluck(:name).each do |category_name| %>
-																				<li><a href="#"><%= category_name %></a></li>
+																				<li><%= link_to category_name, courses_path(category: category_name) %></li>
 																			<% end %>
 																	</ul>
 															</li>
@@ -95,7 +95,7 @@
 									<a href="#">Category</a>
 									<ul class="submenu">
 											<% Category.order(name: :asc).pluck(:name).each do |category_name| %>
-												<li><a href="#"><%= category_name %></a></li>
+												<li><%= link_to category_name, courses_path(category: category_name) %></li>
 											<% end %>
 									</ul>
 							</li>

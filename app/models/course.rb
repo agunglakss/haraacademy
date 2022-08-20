@@ -8,6 +8,8 @@ class Course < ApplicationRecord
 
 # query
 scope :by_status_and_type, -> (sort) { where(status: 'published', sort: sort) }
+scope :by_category, -> (category_id) { where(category_id: category_id) }
+scope :by_speaker, -> (speaker_id) { where(speaker_id: speaker_id) }
 
 # enum
 enum :status, [:draft, :published]
