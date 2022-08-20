@@ -1,0 +1,52 @@
+<div class="edu-course-widget widget-category">
+  <div class="inner">
+    <h5 class="widget-title">Filter by Categories</h5>
+    <div class="content">
+    <% Category.all.each do |category| %>
+      <div class="edu-form-check">
+        <%= link_to category.name, courses_path(category: category.name) %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+<div class="edu-course-widget widget-instructor">
+    <div class="inner">
+      <h5 class="widget-title">Speaker</h5>
+      <div class="content">
+      <% Speaker.all.each do |speaker| %>
+        <div class="edu-form-check">
+          <input type="checkbox" id="<%= speaker.full_name%>">
+          <label for="<%= speaker.full_name%>"><%= speaker.full_name%> <span>(2)</span></label>
+        </div>
+      <% end %>
+      </div>
+    </div>
+</div>
+<div class="edu-course-widget widget-price">
+    <div class="inner">
+        <h5 class="widget-title">Price</h5>
+        <div class="content">
+            <div class="edu-form-check">
+                <input type="checkbox" id="price-check1">
+                <label for="price-check1">All Price</label>
+            </div>
+            <div class="edu-form-check">
+                <input type="checkbox" id="price-check2">
+                <label for="price-check2">Free</label>
+            </div>
+            <div class="edu-form-check">
+                <input type="checkbox" id="price-check3">
+                <label for="price-check3">Low to High</label>
+            </div>
+            <div class="edu-form-check">
+                <input type="checkbox" id="price-check4">
+                <label for="price-check4">High to Low</label>
+            </div>
+            <div class="edu-form-check">
+                <input type="checkbox" id="price-check5">
+                <label for="price-check5">Paid</label>
+            </div>
+        </div>
+    </div>
+</div>
