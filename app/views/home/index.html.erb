@@ -111,7 +111,11 @@
 															<h6 class="title">
 																	<a href="#"><%= course.title %></a>
 															</h6>
-															<div class="course-price">Rp <%= course.price %></div>
+															<%
+																num_groups = course.price.to_s.chars.to_a.reverse.each_slice(3)
+    														price = num_groups.map(&:join).join(',').reverse
+															%>
+															<div class="course-price">Rp <%= price %></div>
 															<ul class="course-meta">
 																	<li><i class="icon-24"></i>13 Lessons</li>
 															</ul>
@@ -154,7 +158,11 @@
 															<h6 class="title">
 																	<a href="#"><%= course.title %></a>
 															</h6>
-															<div class="course-price">Rp <%= course.price %></div>
+															<%
+																num_groups = course.price.to_s.chars.to_a.reverse.each_slice(3)
+    														price = num_groups.map(&:join).join(',').reverse
+															%>
+															<div class="course-price">Rp <%= price %></div>
 															<ul class="course-meta">
 																	<li><i class="icon-24"></i>13 Lessons</li>
 															</ul>

@@ -22,6 +22,11 @@ has_rich_text :body
 # trigger
 after_validation :set_slug, only: [:create, :update]
   
+def format_number(number)
+  num_groups = number.to_s.chars.to_a.reverse.each_slice(3)
+  num_groups.map(&:join).join(',').reverse
+end
+
 private
   def set_slug
     self.slug = title.to_s.parameterize
