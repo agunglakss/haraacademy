@@ -2,7 +2,7 @@
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item text-white"><a href="#">HaraAcademy</a></li>
+        <li class="breadcrumb-item text-white"><%= link_to "Hara Academy", root_path %></li>
         <li class="breadcrumb-item text-white active" aria-current="page">Courses</li>
       </ol>
     </nav>
@@ -61,7 +61,7 @@
 									<ul class="course-meta">
 											<li><i class="icon-24"></i>15 Lessons</li>
 									</ul>
-									<a href="course-details.html" class="edu-btn btn-secondary btn-small">Enrolled <i class="icon-4"></i></a>
+									<%= link_to course_path(course.slug), class: "edu-btn btn-secondary btn-small" do %>Enrolled <i class="icon-4"></i><% end %>
 								</div>
 							</div>
 						</div>

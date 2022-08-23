@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   # course routing
   get 'courses', to: 'course#index'
-  get 'courses/:slug', to: 'course#show'
+  get '/courses/:slug', to: 'course#show', as: 'course'
 
   devise_for :users, controllers: { passwords: 'passwords' }
   get 'admins', to: 'admins#index'

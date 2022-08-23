@@ -17,5 +17,6 @@ class CourseController < ApplicationController
   end
 
   def show
+    @course = Course.includes(:speaker, :category).where(slug: params[:slug]).take
   end
 end

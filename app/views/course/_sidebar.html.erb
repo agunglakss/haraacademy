@@ -11,39 +11,12 @@
   </div>
 </div>
 <div class="edu-course-widget widget-instructor">
-    <div class="inner">
-      <h5 class="widget-title">Speaker</h5>
-      <div class="content">
-      <% Speaker.select(:full_name).each do |speaker| %>
-          <%= link_to speaker.full_name, courses_path(speaker: speaker.full_name) %>
-      <% end %>
-      </div>
+  <div class="inner">
+    <h5 class="widget-title">Speaker</h5>
+    <div class="content">
+    <% Speaker.select(:full_name).each do |speaker| %>
+        <%= link_to speaker.full_name, courses_path(speaker: speaker.full_name) %>
+    <% end %>
     </div>
-</div>
-<div class="edu-course-widget widget-price">
-    <div class="inner">
-        <h5 class="widget-title">Price</h5>
-        <div class="content">
-            <div class="edu-form-check">
-                <input type="checkbox" id="price-check1">
-                <label for="price-check1">All Price</label>
-            </div>
-            <div class="edu-form-check">
-                <input type="checkbox" id="price-check2">
-                <label for="price-check2">Free</label>
-            </div>
-            <div class="edu-form-check">
-                <input type="checkbox" id="price-check3">
-                <label for="price-check3">Low to High</label>
-            </div>
-            <div class="edu-form-check">
-                <input type="checkbox" id="price-check4">
-                <label for="price-check4">High to Low</label>
-            </div>
-            <div class="edu-form-check">
-                <input type="checkbox" id="price-check5">
-                <label for="price-check5">Paid</label>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
