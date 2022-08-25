@@ -2,87 +2,54 @@
 	<!--=       Hero Banner Area Start      =-->
 	<div class="hero-banner hero-style-4 bg-color-dark">
 		<div class="container">
-				<div class="row justify-content-center">
-						<div class="col-lg-8">
-								<div class="banner-content">
-										<h1 class="title">Let’s Started</h1>
-										<h2 class="text-white">Learning Skills & Upgrade Your Life</h2>
-										<div class="banner-btn">
-												<a href="#" class="edu-btn">Find courses <i class="icon-4"></i></a>
-										</div>
-								</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-8">
+					<div class="banner-content">
+						<h1 class="title">Let’s Started</h1>
+						<h2 class="text-white">Learning Skills & Upgrade Your Life</h2>
+						<div class="banner-btn">
+							<%= link_to courses_path, class: "edu-btn btn-secondary" do %>Find courses <i class="icon-4"></i><% end %>
 						</div>
+					</div>
 				</div>
+			</div>
 		</div>
 		<div class="banner-gallery">
-				<div class="online-support">
-						<div class="inner">
-								<div class="icon">
-										<i class="icon-29"></i>
-								</div>
-								<div class="content">
-										<span class="subtitle">Whatsapp Support </span>
-										<h4 class="title"><a href="tel:+0123456789">+012 (345) 6789</a></h4>
-								</div>
-						</div>
+			<div class="online-support">
+				<div class="inner">
+					<div class="icon">
+						<i class="icon-29"></i>
+					</div>
+					<div class="content">
+						<span class="subtitle">Whatsapp Support </span>
+						<h4 class="title"><a href="tel:+0123456789">+012 (345) 6789</a></h4>
+					</div>
 				</div>
+			</div>
 		</div>
-		<ul class="shape-group">
-				<li class="shape-3 scene">
-						<%= image_tag ("faq/shape-12.png"), alt: "Hara Academy" %>
-				</li>
-				<li class="shape-6 scene">
-						<%= image_tag ("faq/shape-12.png"), alt: "Hara Academy" %>
-				</li>
-		</ul>
 	</div>
 	<!--=       Hero Banner Area End      =-->
 
 	<!-- Start Categories Area  -->
 	<div class="edu-categorie-area categorie-area-2 edu-section-gap bg-color-dark" id="categories">
 		<div class="container">
-				<div class="section-title section-center" >
-						<h2 class="title">Top Categories</h2>
-						<span class="shape-line"><i class="icon-19"></i></span>
-						<p>Consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore</p>
-				</div>
+			<div class="section-title section-center" >
+				<h2 class="title">Top Categories</h2>
+				<span class="shape-line"><i class="icon-19"></i></span>
+			</div>
 
-				<div class="row g-5">
-						<div class="col-lg-4 col-md-6">
-								<div class="categorie-grid categorie-style-2 color-primary-style">
-										<div class="icon">
-												<i class="icon-9"></i>
-										</div>
-										<div class="content">
-												<h5 class="title">Business Management</h5>
-										</div>
-								</div>
-						</div>
+			<div class="row ">
+				<% @categories.each do |category| %>
+					<div class="col-lg-4 col-md-4 mb-2">
+						<%= link_to courses_path(category: category.name), class: "categorie-grid categorie-style-2 color-primary-style" do %>
+							<div class="content">
+								<h5 class="title"><%= category.name.titleize %></h5>
+							</div>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
 
-						<div class="col-lg-4 col-md-6">
-								<div class="categorie-grid categorie-style-2 color-secondary-style">
-										<div class="icon">
-												<i class="icon-10 art-design"></i>
-										</div>
-										<div class="content">
-												<h5 class="title">Arts & Design</h5>
-										</div>
-								</div>
-						</div>
-
-						<div class="col-lg-4 col-md-6" >
-								<div class="categorie-grid categorie-style-2 color-extra01-style">
-										<div class="icon">
-												<i class="icon-11 personal-development"></i>
-										</div>
-										<div class="content">
-												<h5 class="title">Personal Development</h5>
-										</div>
-								</div>
-						</div>
-
-						
-				</div>
 		</div>
 	</div>
 	<!-- End Categories Area  -->
@@ -103,23 +70,20 @@
 											<div class="inner">
 													<div class="thumbnail">
 															<a href="course-details.html">
-																	<%= image_tag (course.image), alt: "Hara Academy" %>
+																<%= image_tag (course.image), alt: "Hara Academy" %>
 															</a>
 													</div>
 													<div class="content">
-													<span class="course-level"><%= course.category.name%></span>
-															<h6 class="title">
-																	<a href="#"><%= course.title %></a>
-															</h6>
-															<%
-																num_groups = course.price.to_s.chars.to_a.reverse.each_slice(3)
-    														price = num_groups.map(&:join).join(',').reverse
-															%>
-															<div class="course-price">Rp <%= price %></div>
-															<ul class="course-meta">
-																	<li><i class="icon-24"></i>13 Lessons</li>
-															</ul>
-															<a href="course-details.html" class="edu-btn btn-secondary btn-small">Enrolled <i class="icon-4"></i></a>	
+														<span class="course-level"><%= course.category.name.titleize %></span>
+														<h6 class="title">
+															<a href="#"><%= course.title %></a>
+														</h6>
+														<%
+															num_groups = course.price.to_s.chars.to_a.reverse.each_slice(3)
+															price = num_groups.map(&:join).join(',').reverse
+														%>
+														<div class="course-price">Rp <%= price %></div>
+														<a href="course-details.html" class="edu-btn btn-secondary btn-small">Enrolled <i class="icon-4"></i></a>	
 													</div>
 											</div>
 									</div>
@@ -128,7 +92,7 @@
 							<!-- End Single Course  -->
 					</div>
 					<div class="course-view-all">
-							<a href="course-one.html" class="edu-btn">Browse more courses <i class="icon-4"></i></a>
+							<a href="course-one.html" class="edu-btn btn-secondary">Browse more courses <i class="icon-4"></i></a>
 					</div>
 			</div>
 	</div>
@@ -136,48 +100,45 @@
 
 	<!-- Start Course Area  -->
 	<div class="edu-course-area course-area-1 edu-section-gap bg-color-dark">
-			<div class="container">
-					<div class="section-title section-center">
-							<span class="pre-title">Live Courses</span>
-							<h2 class="title">Pick A Course To Get Started</h2>
-							<span class="shape-line"><i class="icon-19"></i></span>
-					</div>
-					<div class="row g-5">
-							<!-- Start Single Course  -->
-							<% @courses_live.each do |course| %>
-							<div class="col-md-6 col-xl-3">
-									<div class="edu-course course-style-1">
-											<div class="inner">
-													<div class="thumbnail">
-															<a href="course-details.html">
-																	<%= image_tag (course.image), alt: "Hara Academy" %>
-															</a>
-													</div>
-													<div class="content">
-													<span class="course-level"><%= course.category.name%></span>
-															<h6 class="title">
-																	<a href="#"><%= course.title %></a>
-															</h6>
-															<%
-																num_groups = course.price.to_s.chars.to_a.reverse.each_slice(3)
-    														price = num_groups.map(&:join).join(',').reverse
-															%>
-															<div class="course-price">Rp <%= price %></div>
-															<ul class="course-meta">
-																	<li><i class="icon-24"></i>13 Lessons</li>
-															</ul>
-															<a href="course-details.html" class="edu-btn btn-secondary btn-small">Enrolled <i class="icon-4"></i></a>	
-													</div>
-											</div>
-									</div>
-							</div>
-							<% end %>
-							<!-- End Single Course  -->
-					</div>
-					<div class="course-view-all">
-							<a href="course-one.html" class="edu-btn">Browse more courses <i class="icon-4"></i></a>
-					</div>
+		<div class="container">
+			<div class="section-title section-center">
+				<span class="pre-title">Live Courses</span>
+				<h2 class="title">Pick A Course To Get Started</h2>
+				<span class="shape-line"><i class="icon-19"></i></span>
 			</div>
+			<div class="row g-5">
+				<!-- Start Single Course  -->
+				<% @courses_live.each do |course| %>
+					<div class="col-md-6 col-xl-3">
+							<div class="edu-course course-style-1">
+								<div class="inner">
+									<div class="thumbnail">
+										<a href="course-details.html">
+											<%= image_tag (course.image), alt: "Hara Academy" %>
+										</a>
+									</div>
+									<div class="content">
+									<span class="course-level"><%= course.category.name.titleize %></span>
+										<h6 class="title">
+											<a href="#"><%= course.title %></a>
+										</h6>
+										<%
+											num_groups = course.price.to_s.chars.to_a.reverse.each_slice(3)
+											price = num_groups.map(&:join).join(',').reverse
+										%>
+										<div class="course-price">Rp <%= price %></div>
+										<%= link_to course_path(course.slug), class: "edu-btn btn-secondary btn-small" do %>Enrolled <i class="icon-4"></i><% end %>
+									</div>
+								</div>
+							</div>
+					</div>
+				<% end %>
+				<!-- End Single Course  -->
+			</div>
+			<div class="course-view-all">
+				<a href="course-one.html" class="edu-btn btn-secondary">Browse more courses <i class="icon-4"></i></a>
+			</div>
+		</div>
 	</div>
 	<!-- End Course Area -->
 

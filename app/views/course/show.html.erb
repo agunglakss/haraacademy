@@ -12,14 +12,15 @@
             <h1 class="title"><%= @course.title%></h1>
         </div>
         <ul class="course-meta">
-            <li><i class="icon-58"></i>by <%= @course.speaker.full_name %></li>
-            <li><%= @course.category.name %></li>
+            <li class="text-white">Speaker : <%= @course.speaker.full_name %></li>
+            <li class="text-white">Category : <%= @course.category.name %></li>
+            <li class="text-white">Last updated : <%= @course.updated_at %></li>
         </ul>
       </div>
   </div>
 </div>
 
-<section class="edu-section-gap course-details-area">
+<section class="mt-5 course-details-area">
   <div class="container">
     <div class="row row--30">
       <div class="col-lg-8">
@@ -27,6 +28,9 @@
           <div class="course-overview">
             <h3 class="heading-title">About This Course</h3>
             <p><%= @course.body %></p>
+          </div>
+          <div class="embed-responsive embed-responsive-16by9 mb-5 ">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ZnuwB35GYMY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="course-curriculam mb--90">
             <div class="accordion edu-accordion" id="accordionExample">

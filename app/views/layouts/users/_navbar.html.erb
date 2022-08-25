@@ -29,7 +29,7 @@
 							<div class="header-brand">
 									<div class="logo">
 											<a href="/">
-													<%= image_tag ("logo/haraacademy_white.png"), alt: "Hara Academy", class: "logo-light" %>
+												<%= image_tag ("logo/haraacademy_white.png"), alt: "Hara Academy", class: "logo-light" %>
 											</a>
 									</div>
 									<div class="header-category">
@@ -39,7 +39,7 @@
 																	<a href="#"><i class="icon-1"></i>Category</a>
 																	<ul class="submenu">
 																			<% Category.order(name: :asc).pluck(:name).each do |category_name| %>
-																				<li><%= link_to category_name, courses_path(category: category_name) %></li>
+																				<li><%= link_to category_name.titleize, courses_path(category: category_name) %></li>
 																			<% end %>
 																	</ul>
 															</li>
@@ -66,7 +66,7 @@
 													</div>
 											</li>
 											<li class="mobile-menu-bar d-block d-xl-none">
-													<button class="hamberger-button">
+													<button class="hamberger-button" data-controller="menu" data-action="click->menu#hamburger">
 															<i class="icon-54"></i>
 													</button>
 											</li>
@@ -75,24 +75,24 @@
 					</div>
 			</div>
 	</div>
-	<div class="popup-mobile-menu">
+	<div class="popup-mobile-menu" id="popUpMobile">
 			<div class="inner">
 					<div class="header-top">
 							<div class="logo">
-									<a href="index.html">
-											<%= image_tag ("logo/logo-white.png"), alt: "Hara Academy", class: "logo-light" %>
+									<a href="/">
+										<%= image_tag ("logo/haraacademy_white.png"), alt: "Hara Academy", class: "logo-light" %>
 									</a>
 							</div>
-							<div class="close-menu">
+							<div class="close-menu" data-controller="menu" data-action="click->menu#close">
 									<button class="close-button">
 											<i class="icon-73"></i>
 									</button>
 							</div>
 					</div>
 					<ul class="mainmenu">
-							<li><a href="/">Home</a></li>
+							<li><%= link_to "Home", root_path %></li>
 							<li class="has-droupdown">
-									<a href="#">Category</a>
+									<a href="#" data-controller="menu" data-action="click->menu#expand">Category</a>
 									<ul class="submenu">
 											<% Category.order(name: :asc).pluck(:name).each do |category_name| %>
 												<li><%= link_to category_name, courses_path(category: category_name) %></li>
@@ -100,7 +100,7 @@
 									</ul>
 							</li>
 							<li><a href="#">Courses</a></li>
-							<li><%= link_to "About us", about_path %></a></li>
+							<li><%= link_to "About us", about_path  %></a></li>
 							<li><%= link_to "Contact us", contact_path %></a></li>
 							<% if user_signed_in? %>
 								<li><a href="#">Account setting</a></li>
