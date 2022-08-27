@@ -2,12 +2,12 @@
 	<div class="container position-relative">
 		<div class="row g-5 justify-content-center">
 			<div class="col-lg-5">
-				<div class="login-form-box">
+				<div class="login-form-box shadow-sm rounded">
 					<h3 class="title">Log in</h3>
 					<span class="text-danger"><%= alert %></span>
 					<p>Don’t have an account? <%= link_to "Registration", new_user_registration_path %></p>
+
 					<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-						
 						<div class="form-group">
 								<%= f.label :email %> <span class="text-danger">*</span>
 								<%= f.email_field :email, autofocus: true, placeholder: "Input your email" %>
@@ -28,13 +28,9 @@
 							<% end %>
 						</div>
 					<% end %>
+
 				</div>
 			</div>
 		</div>
-		<ul class="shape-group">
-			<li class="shape-1 scene"><%= image_tag ("about/shape-07.png"), alt: "Hara Academy" %></li>
-			<li class="shape-2 scene"><%= image_tag ("about/shape-13.png"), alt: "Hara Academy" %></li>
-			<li class="shape-3 scene"><%= image_tag ("counterup/shape-02.png"), alt: "Hara Academy" %></li>
-		</ul>
 	</div>
 </section>

@@ -15587,7 +15587,7 @@ body .tpd-size-medium .tpd-content {
 }
 
 .login-form-box {
-    
+    padding: 40px 30px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -15598,6 +15598,7 @@ body .tpd-size-medium .tpd-content {
 
 .login-form-box .title {
     margin-bottom: 5px;
+    color: var(--color--lightest-navy);
 }
 
 .login-form-box p {
