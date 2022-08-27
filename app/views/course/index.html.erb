@@ -49,7 +49,7 @@
 											<% end %>
 									</div>
 									<div class="content">
-										<span class="course-level"><%= course.category.name %></span>
+										<span class="course-level"><%= course.category.name.titleize %></span>
 										<h6 class="title">
 												<%= link_to course.title, course_path(course.slug) %>
 										</h6>

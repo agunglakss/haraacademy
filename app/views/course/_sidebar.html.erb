@@ -4,7 +4,7 @@
     <div class="content">
     <% Category.select(:name).each do |category| %>
       <div class="edu-form-check">
-        <%= link_to category.name, courses_path(category: category.name) %>
+        <%= link_to category.name.titleize, courses_path(category: category.name) %>
       </div>
     <% end %>
     </div>
