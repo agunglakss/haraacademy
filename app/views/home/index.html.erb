@@ -92,7 +92,7 @@
 							<!-- End Single Course  -->
 					</div>
 					<div class="course-view-all">
-							<a href="course-one.html" class="edu-btn btn-secondary">Browse more courses <i class="icon-4"></i></a>
+							<%= link_to courses_path(type: 'playback'), class: "edu-btn btn-secondary" do %>Browse more courses <i class="icon-4"></i><% end %>
 					</div>
 			</div>
 	</div>
@@ -136,7 +136,7 @@
 				<!-- End Single Course  -->
 			</div>
 			<div class="course-view-all">
-				<a href="course-one.html" class="edu-btn btn-secondary">Browse more courses <i class="icon-4"></i></a>
+				<%= link_to courses_path(type: 'live'), class: "edu-btn btn-secondary" do %>Browse more courses <i class="icon-4"></i><% end %>
 			</div>
 		</div>
 	</div>

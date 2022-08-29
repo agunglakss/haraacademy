@@ -6,12 +6,13 @@ class CourseController < ApplicationController
     
     speaker = Speaker.select(:id).where(full_name: params[:speaker]).take
 
+    @courses = @courses.where(sort: params[:type]) unless params[:type].nil?
     # jika parameter kategori jika tidak kosong tampilkan berdasarakan kategori
     @courses = @courses.by_category(category) unless category.nil?
     # jika parameter speaker jika tidak kosong tampilkan berdasarkan speaker
     @courses = @courses.by_speaker(speaker) unless speaker.nil?
      # jika parameter kosong maka tampilkan semua course order by created_at descending
-    @courses = @courses.order(created_at: :desc)
+    @courses = @courses.order(created_at: :desc).page(params[:page]).per(10)
     # total kursus
     @total_course = @courses.count
   end
