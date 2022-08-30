@@ -1,4 +1,6 @@
 class Admins::CategoriesController < AdminsController
+  before_action :authenticate_user!
+  before_action :is_admin?
   before_action :set_category, only: [:edit, :update, :destroy]
 
   def index
@@ -59,5 +61,11 @@ class Admins::CategoriesController < AdminsController
 
     def category_params
       params.require(:category).permit(:name, :icon, :sequence, :color)
+    end
+
+    def is_admin?
+      if current_user.role != 1
+        redirect_to root_path
+      end
     end
 end

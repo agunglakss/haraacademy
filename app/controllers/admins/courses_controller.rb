@@ -1,4 +1,6 @@
 class Admins::CoursesController < AdminsController
+  before_action :authenticate_user!
+  before_action :is_admin?
   
   before_action :set_course, only: [:edit, :update, :destroy]
 
@@ -60,5 +62,11 @@ class Admins::CoursesController < AdminsController
 
     def course_params
       params.require(:course).permit(:title, :slug, :price, :discount, :date, :sort, :status, :created_by, :updated_by, :category_id, :speaker_id, :slug, :image, :body)
+    end
+
+    def is_admin?
+      if current_user.role != 1
+        redirect_to root_path
+      end
     end
 end

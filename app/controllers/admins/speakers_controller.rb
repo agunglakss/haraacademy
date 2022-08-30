@@ -1,4 +1,6 @@
 class Admins::SpeakersController < AdminsController
+  before_action :authenticate_user!
+  before_action :is_admin?
   before_action :set_speaker, only: [:edit, :update, :destroy]
 
   def index
@@ -59,5 +61,11 @@ class Admins::SpeakersController < AdminsController
 
     def speaker_params
       params.require(:speaker).permit(:full_name, :title, :description, :body)
+    end
+
+    def is_admin?
+      if current_user.role != 1
+        redirect_to root_path
+      end
     end
 end

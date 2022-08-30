@@ -1,4 +1,6 @@
 class Admins::VideosController < AdminsController
+  before_action :authenticate_user!
+  before_action :is_admin?
   before_action :set_video, only: [:edit, :update, :destroy]
 
   def index
@@ -59,5 +61,11 @@ class Admins::VideosController < AdminsController
 
     def video_params
       params.require(:video).permit(:course_id, :subject, :url_video)
+    end
+
+    def is_admin?
+      if current_user.role != 1
+        redirect_to root_path
+      end
     end
 end
