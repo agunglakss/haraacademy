@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     resources :speakers
     resources :courses
     resources :videos
+    resources :users
   end
 end
