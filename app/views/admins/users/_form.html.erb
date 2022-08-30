@@ -1,0 +1,18 @@
+<%= link_to admins_users_path, class: "edu-btn btn-medium mt-3" do %>Back to users <i class="icon-4"></i><% end %>
+
+<%= form_with model: user, url: url, class: "mt-5" do |f| %>
+
+    <div class="mb-3 form-group">
+      <%= f.label :first_name do %>First Name <span class="text-danger">*</span><% end %>
+      <%= f.text_field :first_name, placeholder: "Input first name", autofocus: true,  class: "form-control" %>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= f.label :role do %>Role <span class="text-danger">*</span><% end %>
+      <%= f.select :role, [["Admin", "admin"], ["Member", "member"]], class: "form-control" %>
+    </div>
+
+    <div class="mb-3 form-group">
+      <%= button_tag :submit, class: "edu-btn btn-medium"%>
+    </div>
+<% end %>
