@@ -65,7 +65,7 @@ class Admins::CoursesController < AdminsController
     end
 
     def is_admin?
-      if current_user.role != 1
+      if current_user.role != 'admin'
         redirect_to root_path
       end
     end
