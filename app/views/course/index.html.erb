@@ -58,7 +58,7 @@
 											price = num_groups.map(&:join).join(',').reverse
 										%>
 										<div class="course-price">Rp <%= price %></div>
-										<%= link_to course_path(course.slug), class: "edu-btn btn-secondary btn-small" do %>Enrolled <i class="icon-4"></i><% end %>
+										<%= link_to checkout_path(course.id), class: "edu-btn btn-secondary btn-small" do %>Enrolled <i class="icon-4"></i><% end %>
 									</div>
 								</div>
 							</div>

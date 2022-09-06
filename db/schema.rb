@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_19_150050) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_02_160452) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -81,6 +81,28 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_150050) do
     t.index ["speaker_id"], name: "index_courses_on_speaker_id"
   end
 
+  create_table "orders", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "status"
+    t.uuid "course_id"
+    t.uuid "user_id"
+    t.string "snap_url"
+    t.json "metadata"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_orders_on_course_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "payment_logs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "status"
+    t.uuid "order_id"
+    t.string "payment_type"
+    t.json "raw_respone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_payment_logs_on_order_id"
+  end
+
   create_table "speakers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "full_name"
     t.string "title"
@@ -130,5 +152,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_150050) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "courses", "categories"
   add_foreign_key "courses", "speakers"
+  add_foreign_key "orders", "courses"
+  add_foreign_key "orders", "users"
+  add_foreign_key "payment_logs", "orders"
   add_foreign_key "videos", "courses"
 end

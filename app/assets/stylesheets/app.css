@@ -240,7 +240,7 @@ STYLESHEET INDEXING
 }
 
 .bg-image--1 {
-    background-image: url(../images/bg/bg-image-1.png);
+    background-image: url(https://images.unsplash.com/photo-1497864149936-d3163f0c0f4b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80);
 }
 
 .svg-image--1 {
@@ -324,7 +324,7 @@ STYLESHEET INDEXING
 }
 
 .bg-image--17 {
-    background-image: url(../images/bg/bg-image-17.jpg);
+    background-image: url(/bg/bg-image-17.jpg);
 }
 
 .bg-image--18 {
@@ -8518,10 +8518,11 @@ body.sal-disabled [data-sal|='flip'] {
 
 .edu-course .content .title {
     margin-bottom: 8px;
+    color: var(--color--lightest-navy);
 }
 
 .edu-course .content .title a {
-    color: var(--color-black);
+    color: var(--color--lightest-navy);
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -8936,7 +8937,6 @@ body.sal-disabled [data-sal|='flip'] {
 }
 
 .edu-course.course-style-4 {
-    box-shadow: var(--shadow-darkest);
     padding: 30px;
 }
 
@@ -13388,26 +13388,21 @@ body .tpd-size-medium .tpd-content {
 }
 
 .hero-banner.hero-style-3 {
-    min-height: 715px;
+    min-height: 100vh;
     position: relative;
     z-index: 1;
-    -webkit-mask-image: url("../images/others/mask-01.png");
-    mask-image: url("../images/others/mask-01.png");
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: cover;
-    -webkit-mask-position: center;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .hero-banner.hero-style-3 {
-        min-height: 100%;
+        min-height: 100vh;
         padding: 100px 0 55px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .hero-banner.hero-style-3 {
-        min-height: 100%;
+        min-height: 100vh;
         padding: 80px 0 35px;
     }
 }
