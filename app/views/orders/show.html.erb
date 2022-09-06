@@ -1,0 +1,76 @@
+<div class="edu-breadcrumb-area pt-4">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item text-white"><%= link_to "Hara Academy", root_path %></li>
+        <li class="breadcrumb-item text-white active" aria-current="page">Checkout</li>
+        <li class="breadcrumb-item text-white active" aria-current="page"><%= @course.title %></li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<section class="checkout-page-area mt-5 mb-5">
+  <div class="container">
+      <div class="row row--25">
+        <div class="col-lg-6">
+          <div class="edu-course course-style-4 course-style-8 shadow-sm">
+            <div class="inner">
+              <div class="thumbnail">
+                <%= image_tag @course.image, alt: @course.title%>
+              </div>
+              <div class="content">
+                <h6 class="title">
+                  <%= @course.title %>
+                </h6>
+                <span class="course-level"><%= @course.category.name.titleize %></span>
+                <%
+                  def convert_number(price)
+                    num_groups = price.to_s.chars.to_a.reverse.each_slice(3)
+                    price = num_groups.map(&:join).join(',').reverse
+                  end
+                %>
+                <div class="course-price">Rp <%= convert_number(@course.price) %></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="order-summery checkout-summery shadow-sm">
+              <div class="summery-table-wrap">
+                  <h4 class="title">Your Orders</h4>
+                  <table class="table summery-table">
+                      <tbody>
+                          <tr>
+                            <td><%= @course.title %></td>
+                            <td>Rp <%= convert_number(@course.price) %></td>
+                          </tr>
+                          <tr>
+                            <td>Dicsount</td>
+                            <td>
+                              <%= 
+                              if @course.discount.nil? 
+                                '-' 
+                              else 
+                                'Rp ' + convert_number(@course.discount) 
+                              end%>
+                            </td>
+                          </tr>
+                          <tr class="order-total">
+                            <td>Total</td>
+                            <td>
+                              Rp <%= convert_number(@course.price.to_i - @course.discount.to_i) %>
+                            </td>
+                          </tr>
+                      </tbody>
+                  </table>
+                  <%= form_with model: @course, url: order_path(@course.id), method: :post, class: "mt-5" do |f| %>
+                    <%= button_tag class: "edu-btn btn-secondary btn-medium" do %>Payment with Midtrans<% end %>
+                  <% end %>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
