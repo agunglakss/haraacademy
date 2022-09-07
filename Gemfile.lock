@@ -96,6 +96,7 @@ GEM
       warden (~> 1.2.3)
     digest (3.1.0)
     erubi (1.10.0)
+    excon (0.92.4)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -231,6 +232,8 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    veritrans (2.4.1)
+      excon (~> 0.20)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -271,6 +274,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  veritrans
   web-console
   webdrivers
 

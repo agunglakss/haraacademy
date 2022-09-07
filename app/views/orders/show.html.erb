@@ -65,7 +65,7 @@
                           </tr>
                       </tbody>
                   </table>
-                  <%= form_with model: @course, url: order_path(@course.id), method: :post, class: "mt-5" do |f| %>
+                  <%= form_with model: @course, url: order_path(@course.id), method: :get, class: "mt-5" do |f| %>
                     <%= button_tag class: "edu-btn btn-secondary btn-medium" do %>Payment with Midtrans<% end %>
                   <% end %>
               </div>
