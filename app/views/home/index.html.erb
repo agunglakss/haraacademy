@@ -3,6 +3,11 @@
 	<!--Hero Banner Area Start-->
 	<div class="hero-banner hero-style-4 bg-color-dark">
 		<div class="container">
+			<% if alert %>
+				<div class="alert alert-danger" role="alert">
+					<%= alert %>
+				</div>
+			<% end %>
 			<div class="row justify-content-center">
 				<div class="col-lg-8">
 					<div class="banner-content">

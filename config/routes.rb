@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   get 'courses', to: 'course#index'
   get '/courses/:slug', to: 'course#show', as: 'course'
 
-  post '/orders/:id/checkout', to: 'orders#create', as: 'order'
-  get '/orders/:id/checkout', to: 'orders#show', as: 'checkout'
+  get '/payment/:id/order', to: 'orders#create', as: 'order'
+  get '/checkout/:id/order', to: 'orders#show', as: 'checkout'
 
   devise_for :users, controllers: { passwords: 'passwords' }
   
