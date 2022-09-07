@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   get 'courses', to: 'course#index'
   get '/courses/:slug', to: 'course#show', as: 'course'
 
-  get '/payment/:id/order', to: 'orders#create', as: 'order'
   get '/checkout/:id/order', to: 'orders#show', as: 'checkout'
+  get '/payment/:id/order', to: 'orders#create', as: 'order'
+  post '/webhook/notification', to: 'orders#notification', as: 'notification'
 
   devise_for :users, controllers: { passwords: 'passwords' }
   
