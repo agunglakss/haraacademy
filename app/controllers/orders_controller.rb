@@ -7,12 +7,14 @@ class OrdersController < ApplicationController
       flash[:alert] = "You need to sign in or sign up before continuing."
       redirect_to new_user_session_path 
     else
-      order = Order.where(course_id: @course.id, user_id: current_user.id).last
-      if order && order.status == 'settlement'
-        redirect_to course_path(@course.slug)
-      elsif order && order.status == 'pending'
-        flash[:alert] = "Anda sudah membeli kursus ini, harap hubungi admin untuk proses pembayaran."
-        redirect_to root_path
+      order = Order.where(course_id: @course.id, user_id: current_user.id).order(updated_at: :desc).take
+      if order 
+        if order.status == 'settlement'
+          redirect_to course_path(@course.slug)
+        elsif order.status == 'pending'
+          flash[:alert] = "Anda sudah membeli kursus ini, harap hubungi admin untuk proses pembayaran."
+          redirect_to root_path
+        end
       end
     end
   end
@@ -20,7 +22,8 @@ class OrdersController < ApplicationController
   def create
     require 'veritrans'
     course = Course.where(id: params[:id]).take
-
+    first_name = current_user.first_name
+    last_name = current_user.last_name if !current_user.last_name.nil? 
     @order = Order.new 
     if course && !current_user.nil?
       total_price = course.price - course.discount.to_i
@@ -39,8 +42,10 @@ class OrdersController < ApplicationController
 
     @order.save
       mt_client = Midtrans.new(
-      server_key: ENV["MIDTRANS_SERVER_KEY"],
-      client_key: ENV["MIDTRANS_CLIENT_KEY"],
+      # server_key: ENV["MIDTRANS_SERVER_KEY"],
+      # client_key: ENV["MIDTRANS_CLIENT_KEY"],
+      server_key: "SB-Mid-server-t_7OHErrySsJ4HF_M9kUngkC",
+      client_key: "SB-Mid-client-ouyDCkaQENXIAQjT",
       api_host: "https://api.sandbox.midtrans.com", # default
       logger: Logger.new(STDOUT), # optional
       file_logger: Logger.new(STDOUT), # optional
@@ -59,20 +64,24 @@ class OrdersController < ApplicationController
         quantity: 1
       },
       customer_details: {
-        first_name: current_user.first_name,
-        last_name: current_user.last_name,
+        first_name: first_name,
+        last_name: last_name,
         email: current_user.email,
         phone: current_user.phone_number
       }
     )
   
+  # redirect to payment midtrans
   redirect_to result.redirect_url, allow_other_host: true
   end
 
   def notification
+    # request from midtrans
     post_body = JSON.parse(request.body.read)
+
+    # create instance Midtrans
     mt_client = Midtrans.new(
-      server_key: ENV["MIDTRANS_SERVER_KEY"],
+      server_key: "SB-Mid-server-t_7OHErrySsJ4HF_M9kUngkC",
       logger: Logger.new(STDOUT), # optional
       file_logger: Logger.new(STDOUT), # optional
     )
@@ -84,13 +93,8 @@ class OrdersController < ApplicationController
     fraud_status = notification.data[:fraud_status]
     status_code = notification.data[:status_code]
     gross_amount = notification.data[:gross_amount]
-
-    puts "Transaction order_id: #{order_id}"
-    puts "Payment type:   #{payment_type}"
-    puts "Transaction status: #{transaction_status}"
-    puts "Fraud status:   #{fraud_status}"
     
-    # signature
+    # check signature from midtrans
     concat_signatur = order_id + status_code.to_s + gross_amount.to_s + "SB-Mid-server-t_7OHErrySsJ4HF_M9kUngkC"
     signature = Digest::SHA512.hexdigest(concat_signatur)
     if(signature != notification.data[:signature_key])
@@ -99,27 +103,50 @@ class OrdersController < ApplicationController
 
     order = Order.where(id: order_id).take
 
-    payment_log = PaymentLog.new
-
     # Sample transactionStatus handling logic
     if transaction_status == "capture" && fraud_status == "challange"
-      order.status = "capture"
+      send_to_whatsapp(transaction_status)
     elsif transaction_status == "capture" && fraud_status == "success"
       order.status = "success"
     elsif transaction_status == "settlement"
-      order.status = "settlement"
+      send_to_whatsapp(transaction_status)
     elsif transaction_status == "deny"
       order.status = "deny"
     elsif transaction_status == "cancel" || transaction_status == "expire"
       order.status = "cancel"
     elsif transaction_status == "pending"
-      order.status = "pending"
+      send_to_whatsapp(transaction_status)
     end
+
+    payment_log = PaymentLog.new
     payment_log.status = transaction_status
     payment_log.order_id = order_id
     payment_log.payment_type = payment_type
     payment_log.raw_respone = notification
     payment_log.save
+
     order.update(:status => transaction_status)
+  end
+
+  def send_to_whatsapp(status)
+    account_sid = 'AC99017e1b49a79b33edea97c0a01a8d9a' 
+    auth_token = '7adde82e5f64e89ab17466c5cbb4f433' 
+    @client = Twilio::REST::Client.new(account_sid, auth_token) 
+    
+    test_whatsapp = ''
+
+    if status == 'pending'
+      test_whatsapp = 'Your transaction is successfully, please make the payment.'
+    elsif status == 'settlement'
+      test_whatsapp = 'Your payment is successfully, thank you'
+    end
+
+    message = @client.messages.create( 
+                                body: test_whatsapp,
+                                from: 'whatsapp:+14155238886',       
+                                to: 'whatsapp:+6285714061623' 
+                              ) 
+    
+    puts message.sid
   end
 end

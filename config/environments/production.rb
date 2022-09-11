@@ -2,7 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.default_url_options = { host: '34.101.210.134', protocol: 'http' }
+  config.action_mailer.default_url_options = { host: 'haraacademy.id', protocol: 'http' }
 
   # Code is not reloaded between requests.
   config.cache_classes = true

@@ -3,6 +3,7 @@ class Admins::DashboardController < AdminsController
   before_action :is_admin?
 
   def index
+    @orders = Order.includes(:user, :course)
   end
 
   protected
