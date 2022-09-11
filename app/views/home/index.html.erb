@@ -11,10 +11,9 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-8">
 					<div class="banner-content">
-						<h1 class="title">Let’s Started</h1>
-						<h2 class="text-white">Learning Skills & Upgrade Your Life</h2>
+						<h2 class="text-white">A platform for learning how to be an entrepeneur through unique stories</h2>
 						<div class="banner-btn">
-							<%= link_to courses_path, class: "edu-btn btn-secondary" do %>Find courses <i class="icon-4"></i><% end %>
+							<%= link_to courses_path, class: "edu-btn btn-secondary" do %>Find Classes <i class="icon-4"></i><% end %>
 						</div>
 					</div>
 				</div>
@@ -62,7 +61,7 @@
 	<div class="edu-course-area course-area-1 edu-section-gap bg-color-dark">
 			<div class="container">
 					<div class="section-title section-center">
-							<h2 class="title">Upcoming Course</h2>
+							<h2 class="title">Upcoming Class</h2>
 							<span class="shape-line"><i class="icon-19"></i></span>
 					</div>
 					<div class="row g-5 justify-content-md-center">
@@ -84,7 +83,7 @@
 															price = num_groups.map(&:join).join(',').reverse
 														%>
 														<div class="course-price">Rp <%= price %></div>
-														<%= link_to checkout_path(@course.id), class: "edu-btn btn-secondary btn-small" do %>Beli langsung kursus ini <i class="icon-4"></i><% end %>
+														<%= link_to checkout_path(@course.id), class: "edu-btn btn-secondary btn-small" do %>Enroll class <i class="icon-4"></i><% end %>
 													</div>
 											</div>
 									</div>

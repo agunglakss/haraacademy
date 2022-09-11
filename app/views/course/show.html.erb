@@ -20,90 +20,17 @@
   </div>
 </div>
 
-<section class="mt-5 course-details-area">
+<section class="mt-5 mb-5 course-details-area">
   <div class="container">
     <div class="row row--30">
       <div class="col-lg-8">
-        <div class="course-details-content course-details-2">
+        <div class="course-details-content">
           <div class="course-overview">
             <h3 class="heading-title">About This Course</h3>
             <p><%= @course.body %></p>
           </div>
           <div class="embed-responsive embed-responsive-16by9 mb-5 ">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ZnuwB35GYMY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <div class="course-curriculam mb--90">
-            <div class="accordion edu-accordion" id="accordionExample">
-              <div class="accordion-item">
-                <h3 class="accordion-header" id="headingOne">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Video Courses
-                  </button>
-                </h3>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <div class="course-lesson">
-                      <ul>
-                        <li>
-                            <div class="text"><i class="icon-65"></i> Introduction</div>
-                            <div class="icon"><i class="icon-68"></i></div>
-                        </li>
-                        <li>
-                          <div class="text"><i class="icon-65"></i> Course Overview</div>
-                          <div class="icon"><i class="icon-68"></i></div>
-                        </li>
-                        <li>
-                          <div class="text"><i class="icon-65"></i> Local Development Environment Tools</div>
-                          <div class="icon"><i class="icon-68"></i></div>
-                        </li>
-                        <li>
-                          <div class="text"><i class="icon-65"></i> Course Exercise / Reference Files</div>
-                          <div class="icon"><i class="icon-68"></i></div>
-                        </li>
-                        <li>
-                          <div class="text"><i class="icon-65"></i> Code Editor Installation (Optional if you have one)</div>
-                          <div class="icon"><i class="icon-68"></i></div>
-                        </li>
-                        <li>
-                          <div class="text"><i class="icon-65"></i> Embedding PHP in HTML</div>
-                          <div class="icon"><i class="icon-68"></i></div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="course-sidebar-3">
-          <div class="edu-course-widget widget-course-summery">
-            <div class="inner">
-                <div class="thumbnail">
-                  <%= image_tag @course.image, alt: @course.title%>
-                </div>
-                <div class="content">
-                  <ul class="course-item">
-                    <li>
-                      <span class="label"><i class="icon-60"></i>Price:</span>
-                      <%
-                        num_groups = @course.price.to_s.chars.to_a.reverse.each_slice(3)
-                        price = num_groups.map(&:join).join(',').reverse
-                      %>
-                      <span class="value price">Rp <%= price %></span>
-                    </li>
-                    <li>
-                      <span class="label"><i class="icon-62"></i>Instrutor:</span>
-                      <span class="value"><%= @course.speaker.full_name %></span>
-                    </li>
-                  </ul>
-                  <div class="read-more-btn">
-                    <a href="#" class="edu-btn">Start Now <i class="icon-4"></i></a>
-                  </div>
-                </div>
-            </div>
+            <iframe width="1280" height="720" src="https://www.youtube.com/embed/XeI8E20ZUE4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
       </div>
