@@ -42,8 +42,8 @@ class OrdersController < ApplicationController
 
     @order.save
       mt_client = Midtrans.new(
-      server_key: ENV["MIDTRANS_SERVER_KEY"],
-      client_key: ENV["MIDTRANS_CLIENT_KEY"],
+      server_key: Rails.application.credentials.dig(:midtrans, :server_key),
+      client_key: Rails.application.credentials.dig(:midtrans, :client_key),
       api_host: "https://api.sandbox.midtrans.com", # default
       logger: Logger.new(STDOUT), # optional
       file_logger: Logger.new(STDOUT), # optional
@@ -79,7 +79,7 @@ class OrdersController < ApplicationController
 
     # create instance Midtrans
     mt_client = Midtrans.new(
-      server_key: ENV["MIDTRANS_SERVER_KEY"],
+      server_key: Rails.application.credentials.dig(:midtrans, :server_key),
       logger: Logger.new(STDOUT), # optional
       file_logger: Logger.new(STDOUT), # optional
     )
@@ -93,7 +93,7 @@ class OrdersController < ApplicationController
     gross_amount = notification.data[:gross_amount]
     
     # check signature from midtrans
-    concat_signatur = order_id + status_code.to_s + gross_amount.to_s + ENV["MIDTRANS_SERVER_KEY"]
+    concat_signatur = order_id + status_code.to_s + gross_amount.to_s + Rails.application.credentials.dig(:midtrans, :server_key)
     signature = Digest::SHA512.hexdigest(concat_signatur)
     if(signature != notification.data[:signature_key])
       return "Transaction notification received. Order ID: #{order_id}. Transaction status: #{transaction_status}. Fraud status: #{fraud_status}"
@@ -127,7 +127,8 @@ class OrdersController < ApplicationController
   end
 
   def send_to_whatsapp(status)
-    
+    account_sid = Rails.application.credentials.dig(:twilio, :account_sid),
+    auth_token = Rails.application.credentials.dig(:twilio, :auth_token),
     @client = Twilio::REST::Client.new(account_sid, auth_token) 
     
     test_whatsapp = ''

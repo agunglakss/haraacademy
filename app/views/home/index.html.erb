@@ -13,13 +13,13 @@
 					<div class="banner-content">
 						<h2 class="text-white">A platform for learning how to be an entrepeneur through unique stories</h2>
 						<div class="banner-btn">
-							<%= link_to courses_path, class: "edu-btn btn-secondary" do %>Find Classes <i class="icon-4"></i><% end %>
+							<%= link_to courses_path, class: "edu-btn btn-secondary" do %>Find Courses <i class="icon-4"></i><% end %>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="banner-gallery">
+		<!--<div class="banner-gallery">
 			<div class="online-support">
 				<div class="inner">
 					<div class="icon">
@@ -31,37 +31,14 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>-->
 	</div>
-
-	<!-- Start Categories Area
-	<div class="edu-categorie-area categorie-area-2 edu-section-gap bg-color-dark" id="categories">
-		<div class="container">
-			<div class="section-title section-center" >
-				<h2 class="title">Top Categories</h2>
-				<span class="shape-line"><i class="icon-19"></i></span>
-			</div>
-
-			<div class="row ">
-				
-					<div class="col-lg-4 col-md-4 mb-2">
-						<a class="categorie-grid categorie-style-2 color-primary-style">
-							<div class="content">
-								<h5 class="title"></h5>
-							</div>
-						</a>
-					</div>
-			</div>
-
-		</div>
-	</div>
-	End Categories Area  -->
 
 	<!-- Start Course Area  -->
 	<div class="edu-course-area course-area-1 edu-section-gap bg-color-dark">
 			<div class="container">
 					<div class="section-title section-center">
-							<h2 class="title">Upcoming Class</h2>
+							<h2 class="title">Newest Story (Live!)</h2>
 							<span class="shape-line"><i class="icon-19"></i></span>
 					</div>
 					<div class="row g-5 justify-content-md-center">
@@ -74,16 +51,14 @@
 															<% end %>
 													</div>
 													<div class="content">
-														<span class="course-level"><%= @course.category.name.titleize %></span>
-														<h6 class="title">
+														<h2 class="title">
 															<%= link_to @course.title, checkout_path(@course.id) %>
-														</h6>
+														</h2>
 														<%
 															num_groups = @course.price.to_s.chars.to_a.reverse.each_slice(3)
 															price = num_groups.map(&:join).join(',').reverse
 														%>
-														<div class="course-price">Rp <%= price %></div>
-														<%= link_to checkout_path(@course.id), class: "edu-btn btn-secondary btn-small" do %>Enroll class <i class="icon-4"></i><% end %>
+														<%= link_to checkout_path(@course.id), class: "edu-btn btn-secondary btn-small" do %>Rp <%= price %><% end %>
 													</div>
 											</div>
 									</div>
