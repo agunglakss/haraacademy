@@ -6,8 +6,9 @@ class CreateCourses < ActiveRecord::Migration[7.0]
       t.integer :price
       t.integer :discount
       t.date :date
-      t.integer :sort, default: 0 # playback or live
+      t.integer :sort, default: 0 # upcoming or playback
       t.integer :status, default: 0 #[draft, published]
+      t.string :url_video
       t.string :created_by
       t.string :updated_by
       t.references :category, type: :uuid, index: true, foreign_key: true

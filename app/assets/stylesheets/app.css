@@ -8405,7 +8405,6 @@ body.sal-disabled [data-sal|='flip'] {
   Course Styles
 ---------------------*/
 .edu-course {
-    background-color: var(--color-white);
     position: relative;
     border-radius: 5px;
     -webkit-transition: var(--transition);
@@ -8451,11 +8450,11 @@ body.sal-disabled [data-sal|='flip'] {
 .edu-course .thumbnail a {
     display: block;
     overflow: hidden;
-    border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 5px 5px;
 }
 
 .edu-course .thumbnail a img {
-    border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 5px 5px;
     -webkit-transition: 0.4s;
     transition: 0.4s;
     width: 100%;
@@ -8517,18 +8516,19 @@ body.sal-disabled [data-sal|='flip'] {
 }
 
 .edu-course .content .title {
+    margin-top: 8px;
     margin-bottom: 8px;
-    color: var(--color--lightest-navy);
+    color: var(--color-white);
 }
 
 .edu-course .content .title a {
-    color: var(--color--lightest-navy);
+    color: var(--color-white);
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .edu-course .content .course-rating {
@@ -8559,7 +8559,7 @@ body.sal-disabled [data-sal|='flip'] {
 }
 
 .edu-course .content .course-price {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
     color: var(--color-secondary);
     font-family: var(--font-secondary);
@@ -12707,7 +12707,6 @@ body .tpd-size-medium .tpd-content {
   Hero Banner Styles
 ---------------------*/
 .hero-banner {
-	min-height: 100vh;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -13469,7 +13468,7 @@ body .tpd-size-medium .tpd-content {
 }
 
 .hero-banner.hero-style-4 {
-    min-height: 85vh;
+    min-height: 50vh;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
@@ -13491,7 +13490,6 @@ body .tpd-size-medium .tpd-content {
 
 .hero-banner.hero-style-4 .banner-content {
     text-align: center;
-    padding-bottom: 30px;
 }
 
 .hero-banner.hero-style-4 .banner-content p {
@@ -22154,7 +22152,7 @@ blockquote .author {
     Spacing
 -------------------------*/
 .edu-section-gap {
-    padding: 115px 0 120px;
+    padding: 50px 0 120px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
