@@ -23,9 +23,6 @@
                 <thead>
                   <tr>
                     <th scope="col">Category name</th>
-                    <th scope="col">Icon</th>
-                    <th scope="col">Color</th>
-                    <th scope="col">Sequence</th>
                     <th scope="col">Created by</th>
                     <th scope="col">Updated by</th>
                     <th scope="col">Created at</th>
@@ -37,9 +34,6 @@
                 <% @categories.each do |category| %>
                   <tr>
                     <th><%= category.name %></th>
-                    <th><%= category.icon %></th>
-                    <th><%= category.color %></th>
-                    <th><%= category.sequence %></th>
                     <th><%= category.created_by %></th>
                     <th><%= category.updated_by %></th>
                     <th><%= category.created_at %></th>
