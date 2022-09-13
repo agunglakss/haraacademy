@@ -44,8 +44,7 @@ class OrdersController < ApplicationController
       mt_client = Midtrans.new(
         server_key: Rails.application.credentials.dig(:midtrans, :server_key),
         client_key: Rails.application.credentials.dig(:midtrans, :client_key),
-        api_host: Rails.application.credentials.dig(:midtrans, :api_host), # default
-        isProduction: true,
+        api_host: Rails.application.credentials.dig(:midtrans, :api_host), 
         logger: Logger.new(STDOUT), # optional
         file_logger: Logger.new(STDOUT), # optional
       )
