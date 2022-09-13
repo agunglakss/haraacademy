@@ -85,7 +85,7 @@ class OrdersController < ApplicationController
       file_logger: Logger.new(STDOUT), # optional
     )
     notification = mt_client.status(post_body['transaction_id'])
-    puts notification
+    puts "notifcation ----------- #{notification}"
     order_id = notification.data[:order_id] # data must match at tabel order
     payment_type = notification.data[:payment_type]
     transaction_status = notification.data[:transaction_status]
