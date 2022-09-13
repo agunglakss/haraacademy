@@ -85,16 +85,17 @@ class OrdersController < ApplicationController
       file_logger: Logger.new(STDOUT), # optional
     )
     notification = mt_client.status(post_body['transaction_id'])
-
+    puts notification
     order_id = notification.data[:order_id] # data must match at tabel order
     payment_type = notification.data[:payment_type]
     transaction_status = notification.data[:transaction_status]
     fraud_status = notification.data[:fraud_status]
     status_code = notification.data[:status_code]
     gross_amount = notification.data[:gross_amount]
-    
+    puts "signatur #{notification.data[:signature_key]}"
     # check signature from midtrans
     concat_signatur = order_id + status_code.to_s + gross_amount.to_s + Rails.application.credentials.dig(:midtrans, :server_key)
+    puts "concat_signatur #{concat_signatur}"
     signature = Digest::SHA512.hexdigest(concat_signatur)
     if(signature != notification.data[:signature_key])
       return "Transaction notification received. Order ID: #{order_id}. Transaction status: #{transaction_status}. Fraud status: #{fraud_status}"
