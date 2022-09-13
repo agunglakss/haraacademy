@@ -15,8 +15,8 @@
 						</div>
 						<div class="form-group">
 								<%= f.label :password %> <span class="text-danger">*</span>
-								<%= f.password_field :password, placeholder: "Input your password" %>
-								<span class="password-show"><i class="icon-76"></i></span>
+								<%= f.password_field :password, placeholder: "Input your password", id: "password" %>
+								<span class="password-show" data-controller="password" data-action="click->password#show"><i class="icon-76"></i></span>
 								<span class="text-danger"><%= resource.errors[:password].first %></span>
 						</div>
 						<div class="form-group chekbox-area">
