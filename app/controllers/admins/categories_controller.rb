@@ -60,7 +60,7 @@ class Admins::CategoriesController < AdminsController
     end
 
     def category_params
-      params.require(:category).permit(:name, :icon, :sequence, :color)
+      params.require(:category).permit(:name)
     end
 
     def is_admin?
