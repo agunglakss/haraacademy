@@ -69,7 +69,6 @@ class OrdersController < ApplicationController
         }
       )
     end
-  
     # redirect to payment midtrans
     redirect_to result.redirect_url, allow_other_host: true
   end
