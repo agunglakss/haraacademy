@@ -22454,3 +22454,20 @@ blockquote .author {
 .pt--50 {
     padding-top: 50px;
 }
+
+.btn-whatsapp {
+    z-index: 9;
+    position: fixed;
+    right: 30px;
+    bottom: 50px;
+    background-color: var(--color-extra01);
+    color: var(--color-white);
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.btn-whatsapp .text-whatsapp {
+    font-weight: bold;
+    vertical-align: middle;
+    font-size: 20px;
+}
