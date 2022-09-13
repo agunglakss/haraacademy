@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # order and payment
   get '/checkout/:id/order', to: 'orders#show', as: 'checkout'
-  post '/payment/:id/order', to: 'orders#create', as: 'order'
+  get '/payment/:id/order', to: 'orders#create', as: 'order'
   post '/webhook/notification', to: 'orders#notification', as: 'notification'
 
   devise_for :users, controllers: { passwords: 'passwords' }

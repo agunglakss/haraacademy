@@ -21,10 +21,13 @@ class OrdersController < ApplicationController
 
   def create
     require 'veritrans'
+
     course = Course.where(id: params[:id]).take
+    @order = Order.new 
+
     first_name = current_user.first_name
     last_name = current_user.last_name if !current_user.last_name.nil? 
-    @order = Order.new 
+
     if course && !current_user.nil?
       total_price = course.price - course.discount.to_i
       detail_order = {
@@ -40,37 +43,35 @@ class OrdersController < ApplicationController
       @order.metadata = detail_order
     end
 
-    if @order.save
-      mt_client = Midtrans.new(
-        server_key: Rails.application.credentials.dig(:midtrans, :server_key),
-        client_key: Rails.application.credentials.dig(:midtrans, :client_key),
-        api_host: Rails.application.credentials.dig(:midtrans, :api_host), 
-        logger: Logger.new(STDOUT), # optional
-        file_logger: Logger.new(STDOUT), # optional
-      )
+    @order.save
+    mt_client = Midtrans.new(
+      server_key: Rails.application.credentials.dig(:midtrans, :server_key),
+      client_key: Rails.application.credentials.dig(:midtrans, :client_key),
+      api_host: Rails.application.credentials.dig(:midtrans, :api_host), 
+      logger: Logger.new(STDOUT), # optional
+      file_logger: Logger.new(STDOUT), # optional
+    )
 
-      result = mt_client.create_snap_redirect_url(
-        transaction_details: {
-          order_id: @order.id,
-          gross_amount: total_price,
-          secure: true
-        },
-        item_details: {
-          id: course.id,
-          price: total_price,
-          name: course.title,
-          quantity: 1
-        },
-        customer_details: {
-          first_name: first_name,
-          last_name: last_name,
-          email: current_user.email,
-          phone: current_user.phone_number
-        }
-      )
-    end
-    # redirect to payment midtrans
-    redirect_to result.redirect_url, allow_other_host: true
+    result = mt_client.create_snap_redirect_url(
+      transaction_details: {
+        order_id: @order.id,
+        gross_amount: total_price,
+        secure: true
+      },
+      item_details: {
+        id: course.id,
+        price: total_price,
+        name: course.title,
+        quantity: 1
+      },
+      customer_details: {
+        first_name: first_name,
+        last_name: last_name,
+        email: current_user.email,
+        phone: current_user.phone_number
+      }
+    )
+    @redirecturl = redirect_to result.redirect_url, allow_other_host: true
   end
 
   def notification
