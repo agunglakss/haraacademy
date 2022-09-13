@@ -44,7 +44,8 @@ class OrdersController < ApplicationController
       mt_client = Midtrans.new(
       server_key: Rails.application.credentials.dig(:midtrans, :server_key),
       client_key: Rails.application.credentials.dig(:midtrans, :client_key),
-      api_host: "https://api.sandbox.midtrans.com", # default
+      api_host: Rails.application.credentials.dig(:midtrans, :api_host), # default
+      isProduction: true,
       logger: Logger.new(STDOUT), # optional
       file_logger: Logger.new(STDOUT), # optional
     )
@@ -80,6 +81,7 @@ class OrdersController < ApplicationController
     # create instance Midtrans
     mt_client = Midtrans.new(
       server_key: Rails.application.credentials.dig(:midtrans, :server_key),
+      isProduction: true,
       logger: Logger.new(STDOUT), # optional
       file_logger: Logger.new(STDOUT), # optional
     )
