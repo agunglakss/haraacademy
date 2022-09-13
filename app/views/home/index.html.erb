@@ -44,6 +44,7 @@
 					<div class="row g-5 justify-content-md-center">
 							<div class="col-offset-2 col-md-6">
 									<div class="edu-course course-style-1">
+										<% unless @course.nil? %>
 											<div class="inner">
 													<div class="thumbnail">
 															<%= link_to checkout_path(@course.id) do %>
@@ -61,6 +62,7 @@
 														<%= link_to checkout_path(@course.id), class: "edu-btn btn-secondary btn-small" do %>Rp <%= price %><% end %>
 													</div>
 											</div>
+										<% end %>
 									</div>
 							</div>
 					</div>
