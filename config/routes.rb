@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'courses', to: 'course#index'
   get '/courses/:slug', to: 'course#show', as: 'course'
 
+  # order and payment
   get '/checkout/:id/order', to: 'orders#show', as: 'checkout'
   get '/payment/:id/order', to: 'orders#create', as: 'order'
   post '/webhook/notification', to: 'orders#notification', as: 'notification'
