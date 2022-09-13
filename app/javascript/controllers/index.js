@@ -5,4 +5,6 @@
 import { application } from "./application"
 
 import MenuController from "./menu_controller"
+import PasswordController from "./password_controller"
 application.register("menu", MenuController)
+application.register("password", PasswordController)
