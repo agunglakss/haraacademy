@@ -82,7 +82,6 @@ class OrdersController < ApplicationController
     # create instance Midtrans
     mt_client = Midtrans.new(
       server_key: Rails.application.credentials.dig(:midtrans, :server_key),
-      isProduction: true,
       logger: Logger.new(STDOUT), # optional
       file_logger: Logger.new(STDOUT), # optional
     )
@@ -104,20 +103,20 @@ class OrdersController < ApplicationController
 
     order = Order.where(id: order_id).take
 
-    # Sample transactionStatus handling logic
-    if transaction_status == "capture" && fraud_status == "challange"
-      send_to_whatsapp(transaction_status)
-    elsif transaction_status == "capture" && fraud_status == "success"
-      order.status = "success"
-    elsif transaction_status == "settlement"
-      send_to_whatsapp(transaction_status)
-    elsif transaction_status == "deny"
-      order.status = "deny"
-    elsif transaction_status == "cancel" || transaction_status == "expire"
-      order.status = "cancel"
-    elsif transaction_status == "pending"
-      send_to_whatsapp(transaction_status)
-    end
+    # # Sample transactionStatus handling logic
+    # if transaction_status == "capture" && fraud_status == "challange"
+    #   #send_to_whatsapp(transaction_status)
+    # elsif transaction_status == "capture" && fraud_status == "success"
+    #   order.status = "success"
+    # elsif transaction_status == "settlement"
+    #   #send_to_whatsapp(transaction_status)
+    # elsif transaction_status == "deny"
+    #   order.status = "deny"
+    # elsif transaction_status == "cancel" || transaction_status == "expire"
+    #   order.status = "cancel"
+    # elsif transaction_status == "pending"
+    #   #send_to_whatsapp(transaction_status)
+    # end
 
     payment_log = PaymentLog.new
     payment_log.status = transaction_status
