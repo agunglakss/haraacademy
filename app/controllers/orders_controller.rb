@@ -102,21 +102,15 @@ class OrdersController < ApplicationController
     end
 
     order = Order.where(id: order_id).take
+    
+    if transaction_status == "settlement"
+      my_course = MyCourse.new
+      my_course.course_id = order.course_id
+      my_course.user_id = order.user_id
+      my_course.save
+    end
 
-    # # Sample transactionStatus handling logic
-    # if transaction_status == "capture" && fraud_status == "challange"
-    #   #send_to_whatsapp(transaction_status)
-    # elsif transaction_status == "capture" && fraud_status == "success"
-    #   order.status = "success"
-    # elsif transaction_status == "settlement"
-    #   #send_to_whatsapp(transaction_status)
-    # elsif transaction_status == "deny"
-    #   order.status = "deny"
-    # elsif transaction_status == "cancel" || transaction_status == "expire"
-    #   order.status = "cancel"
-    # elsif transaction_status == "pending"
-    #   #send_to_whatsapp(transaction_status)
-    # end
+    order.update(:status => transaction_status)
 
     payment_log = PaymentLog.new
     payment_log.status = transaction_status
@@ -124,8 +118,6 @@ class OrdersController < ApplicationController
     payment_log.payment_type = payment_type
     payment_log.raw_respone = notification
     payment_log.save
-
-    order.update(:status => transaction_status)
   end
 
   def send_to_whatsapp(status)
