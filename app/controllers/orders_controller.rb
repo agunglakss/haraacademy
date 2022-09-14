@@ -72,7 +72,7 @@ class OrdersController < ApplicationController
         }
       )
     end
-    @redirecturl = redirect_to result.redirect_url, allow_other_host: true
+    redirect_to result.redirect_url, allow_other_host: true
   end
 
   def notification
