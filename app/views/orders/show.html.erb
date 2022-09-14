@@ -19,44 +19,33 @@
               <div class="thumbnail">
                 <%= image_tag @course.image, alt: @course.title%>
               </div>
-              <div class="content">
-                <h6 class="title">
-                  <%= @course.title %>
-                </h6>
-                <span class="course-level"><%= @course.category.name.titleize %></span>
-                <%
-                  def convert_number(price)
-                    num_groups = price.to_s.chars.to_a.reverse.each_slice(3)
-                    price = num_groups.map(&:join).join(',').reverse
-                  end
-                %>
-                <div class="course-price">Rp <%= convert_number(@course.price) %></div>
-              </div>
             </div>
           </div>
         </div>
-
+        <%
+          def convert_number(price)
+            num_groups = price.to_s.chars.to_a.reverse.each_slice(3)
+            price = num_groups.map(&:join).join(',').reverse
+          end
+        %>
         <div class="col-lg-6">
           <div class="order-summery checkout-summery shadow-sm">
               <div class="summery-table-wrap">
-                  <h4 class="title">Your Orders</h4>
+                  <h4 class="title">Your Order</h4>
                   <table class="table summery-table">
                       <tbody>
                           <tr>
                             <td><%= @course.title %></td>
                             <td>Rp <%= convert_number(@course.price) %></td>
                           </tr>
+                          <% if @course.discount != 0 %>
                           <tr>
                             <td>Dicsount</td>
                             <td>
-                              <%= 
-                              if @course.discount.nil? 
-                                '-' 
-                              else 
-                                'Rp ' + convert_number(@course.discount) 
-                              end%>
+                              <%= 'Rp ' + convert_number(@course.discount) %>
                             </td>
                           </tr>
+                          <% end %>
                           <tr class="order-total">
                             <td>Total</td>
                             <td>
@@ -65,10 +54,7 @@
                           </tr>
                       </tbody>
                   </table> 
-                  <%= link_to "Payment with Midtrans", order_path(@course.id) %>
-                  <%= form_with model: @course, url: order_path(@course.id), method: :post, class: "mt-5" do |f| %>
-                    <%= button_tag class: "edu-btn btn-secondary btn-medium" do %>Payment with Midtrans<% end %>
-                  <% end %>
+                  <%= link_to "Payment with Midtrans", order_path(@course.id), class: "edu-btn btn-secondary btn-medium" %>
               </div>
           </div>
         </div>
