@@ -71,8 +71,8 @@ class OrdersController < ApplicationController
           phone: current_user.phone_number
         }
       )
-      @redirecturl = redirect_to result.redirect_url, allow_other_host: true
     end
+    @redirecturl = redirect_to result.redirect_url, allow_other_host: true
   end
 
   def notification
