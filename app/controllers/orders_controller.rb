@@ -28,6 +28,7 @@ class OrdersController < ApplicationController
     first_name = current_user.first_name
     last_name = current_user.last_name if !current_user.last_name.nil? 
 
+    # cek jika coursenya ada dan user sudah login
     if course && !current_user.nil?
       total_price = course.price - course.discount.to_i
       detail_order = {
@@ -41,9 +42,8 @@ class OrdersController < ApplicationController
       @order.course_id = course.id
       @order.user_id = current_user.id
       @order.metadata = detail_order
-    end
 
-    if @order.save
+      @order.save
       mt_client = Midtrans.new(
         server_key: Rails.application.credentials.dig(:midtrans, :server_key),
         client_key: Rails.application.credentials.dig(:midtrans, :client_key),
@@ -73,7 +73,9 @@ class OrdersController < ApplicationController
       )
     end
     redirect_to result.redirect_url, allow_other_host: true
-    return
+  end
+
+  def payment
   end
 
   def notification

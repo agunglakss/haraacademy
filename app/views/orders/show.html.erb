@@ -54,7 +54,16 @@
                           </tr>
                       </tbody>
                   </table> 
-                  <%= link_to "Payment with Midtrans", order_path(@course.id), class: "edu-btn btn-secondary btn-medium" %>
+                  <%= form_with url: order_path(@course.id), method: :get, class: "mt-5" do |f| %>
+
+                    
+
+                    <div class="mb-3 form-group">
+                      <%= button_tag :submit, class: "edu-btn btn-secondary btn-medium"%>
+                    </div>
+
+                <% end %>
+                  
               </div>
           </div>
         </div>
