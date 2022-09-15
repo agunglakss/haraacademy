@@ -30,14 +30,14 @@ class OrdersController < ApplicationController
 
     # cek jika coursenya ada dan user sudah login
     if course && !current_user.nil?
-      total_price = course.price - course.discount.to_i
+      total_price = course.price.to_i - course.discount.to_i
       detail_order = {
         price: course.price,
         diskon: course.discount.to_i,
         title: course.title,
         course_id: course.id,
         user_id: current_user.id,
-        total_price: total_price
+        total_price: total_price.to_i
       }
       @order.course_id = course.id
       @order.user_id = current_user.id
@@ -55,7 +55,7 @@ class OrdersController < ApplicationController
       result = mt_client.create_snap_redirect_url(
         transaction_details: {
           order_id: @order.id,
-          gross_amount: total_price,
+          gross_amount: total_price.to_i,
           secure: true
         },
         item_details: {
@@ -75,31 +75,28 @@ class OrdersController < ApplicationController
     redirect_to result.redirect_url, allow_other_host: true
   end
 
-  def payment
-  end
-
   def notification
     # request from midtrans
     post_body = JSON.parse(request.body.read)
-
+    sk = Rails.application.credentials.dig(:midtrans, :server_key)
     # create instance Midtrans
     mt_client = Midtrans.new(
       server_key: Rails.application.credentials.dig(:midtrans, :server_key),
-      logger: Logger.new(STDOUT), # optional
-      file_logger: Logger.new(STDOUT), # optional
+      client_key: Rails.application.credentials.dig(:midtrans, :client_key),
+      api_host: Rails.application.credentials.dig(:midtrans, :api_host), 
     )
     notification = mt_client.status(post_body['transaction_id'])
-    puts "notifcation ----------- #{notification}"
+    puts "-------------- #{notification}"
     order_id = notification.data[:order_id] # data must match at tabel order
     payment_type = notification.data[:payment_type]
     transaction_status = notification.data[:transaction_status]
     fraud_status = notification.data[:fraud_status]
     status_code = notification.data[:status_code]
     gross_amount = notification.data[:gross_amount]
-    puts "signatur #{notification.data[:signature_key]}"
+    
     # check signature from midtrans
-    concat_signatur = order_id + status_code.to_s + gross_amount.to_s + Rails.application.credentials.dig(:midtrans, :server_key)
-    puts "concat_signatur #{concat_signatur}"
+    concat_signatur = order_id.to_s + status_code.to_s + gross_amount.to_s + sk
+    
     signature = Digest::SHA512.hexdigest(concat_signatur)
     if(signature != notification.data[:signature_key])
       return "Transaction notification received. Order ID: #{order_id}. Transaction status: #{transaction_status}. Fraud status: #{fraud_status}"
