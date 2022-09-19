@@ -18,7 +18,6 @@ class CourseController < ApplicationController
   end
 
   def show
-
     @course = Course.includes(:speaker, :category).where(slug: params[:slug]).take
     order = Order.where(course_id: @course.id, user_id: current_user.id).take
     redirect_to root_path unless order 

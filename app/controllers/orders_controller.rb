@@ -79,6 +79,7 @@ class OrdersController < ApplicationController
     # request from midtrans
     post_body = JSON.parse(request.body.read)
     sk = Rails.application.credentials.dig(:midtrans, :server_key)
+
     # create instance Midtrans
     mt_client = Midtrans.new(
       server_key: Rails.application.credentials.dig(:midtrans, :server_key),
@@ -86,7 +87,7 @@ class OrdersController < ApplicationController
       api_host: Rails.application.credentials.dig(:midtrans, :api_host), 
     )
     notification = mt_client.status(post_body['transaction_id'])
-    puts "-------------- #{notification}"
+    
     order_id = notification.data[:order_id] # data must match at tabel order
     payment_type = notification.data[:payment_type]
     transaction_status = notification.data[:transaction_status]
@@ -102,13 +103,21 @@ class OrdersController < ApplicationController
       return "Transaction notification received. Order ID: #{order_id}. Transaction status: #{transaction_status}. Fraud status: #{fraud_status}"
     end
 
+    # get data order
     order = Order.where(id: order_id).take
     
     if transaction_status == "settlement"
+      # get data user
+      user = User.where(id: order.user_id).take
+      # get data course
+      course = Course.where(id: order.course_id).take
+
       my_course = MyCourse.new
       my_course.course_id = order.course_id
       my_course.user_id = order.user_id
       my_course.save
+
+      send_to_whatsapp(user.first_name, user.last_name, user.phone_number, course.slug)
     end
 
     order.update(:status => transaction_status)
@@ -121,25 +130,27 @@ class OrdersController < ApplicationController
     payment_log.save
   end
 
-  def send_to_whatsapp(status)
-    account_sid = Rails.application.credentials.dig(:twilio, :account_sid),
-    auth_token = Rails.application.credentials.dig(:twilio, :auth_token),
-    @client = Twilio::REST::Client.new(account_sid, auth_token) 
+  def send_to_whatsapp(first_name, last_name = "", phone_number, slug)
+    api_key = Rails.application.credentials.dig(:watzap, :api_key)
+    number_key = Rails.application.credentials.dig(:watzap, :number_key)
+    link = "https://haraacademy.id/courses/#{slug}"
+    url = URI("https://api.watzap.id/v1/send_message")
     
-    test_whatsapp = ''
+    message = "Hi #{first_name} #{last_name},\nSilakan klik link di bawah untuk masuk ke portal akun Hara Academy mu untuk mengakses story yang telah di beli.\n#{link} \n\nHara Academy"
 
-    if status == 'pending'
-      test_whatsapp = 'Your transaction is successfully, please make the payment.'
-    elsif status == 'settlement'
-      test_whatsapp = 'Your payment is successfully, thank you'
-    end
+    https = Net::HTTP.new(url.host, url.port)
+    https.use_ssl = true
 
-    message = @client.messages.create( 
-                                body: test_whatsapp,
-                                from: 'whatsapp:+14155238886',       
-                                to: 'whatsapp:+6285714061623' 
-                              ) 
-    
-    puts message.sid
+    request = Net::HTTP::Post.new(url)
+    request["Content-Type"] = "application/json"
+    request.body = JSON.dump({
+      "api_key": "",
+      "number_key": "",
+      "phone_no": phone_number,
+      "message": message
+    })
+
+    response = https.request(request)
+    puts response.read_body
   end
 end

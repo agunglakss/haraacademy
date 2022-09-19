@@ -56,7 +56,9 @@
                   </table> 
                   <%= form_with url: order_path(@course.id), method: :post, local: true, data: {turbo: false}, class: "mt-5" do |f| %>
                     <div class="mb-3 form-group">
-                      <%= button_tag :submit, class: "edu-btn btn-secondary btn-medium"%>
+                      <%= button_tag class: "edu-btn btn-secondary btn-medium" do %>
+                        Payment with midtrans
+                      <% end %>
                     </div>
                 <% end %>
                   
