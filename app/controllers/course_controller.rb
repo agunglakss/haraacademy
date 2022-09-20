@@ -19,7 +19,11 @@ class CourseController < ApplicationController
 
   def show
     @course = Course.includes(:speaker, :category).where(slug: params[:slug]).take
-    order = Order.where(course_id: @course.id, user_id: current_user.id).take
-    redirect_to root_path unless order 
+    if @course.nil? || current_user.nil?
+      flash[:alert] = "You need to sign in or sign up before continuing."
+      redirect_to new_user_session_path 
+    end
+    my_course = MyCourse.where(course_id: @course.id, user_id: current_user.id).take
+    redirect_to root_path unless my_course
   end
 end
