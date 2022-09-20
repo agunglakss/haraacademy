@@ -136,7 +136,7 @@ class OrdersController < ApplicationController
     link = "https://haraacademy.id/courses/#{slug}"
     url = URI("https://api.watzap.id/v1/send_message")
     
-    message = "Hi #{first_name} #{last_name},\nSilakan klik link di bawah untuk masuk ke portal akun Hara Academy mu untuk mengakses story yang telah di beli.\n#{link} \n\nHara Academy"
+    message = "Hi #{first_name} #{last_name},\nTerimakasih sudah mendaftar kelas di Hara Academy, link meeting akan tersedia sehari sebelum live.\n#{link} \nSee you very soon😘\n\nHara Academy"
 
     https = Net::HTTP.new(url.host, url.port)
     https.use_ssl = true
