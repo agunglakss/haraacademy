@@ -22,18 +22,26 @@
 
 <section class="mt-5 mb-5 course-details-area">
   <div class="container">
-    <div class="row row--30">
-      <div class="col-lg-8">
-        <div class="course-details-content">
-          <div class="course-overview">
-            <h3 class="heading-title">About This Course</h3>
-            <p><%= @course.body %></p>
+    <div class="row justify-content-md-center">
+          <div class="col-offset-2 col-md-8">
+            <div class="edu-course course-style-4 course-style-8 shadow-sm">
+              <div class="inner">
+                <div class="thumbnail">
+                  <%= image_tag @course.image, alt: @course.title%>
+                </div>
+              </div>
+            </div>
+            <% if @course.url_video == '' || @course.url_video.nil? %>
+              <a href="#" class="edu-btn btn-secondary btn-large col-md-12">Link akan tersedia sehari sebelum live story.</a>
+            <% else %>
+              <a href="<%= @course.url_video %>" class="edu-btn btn-secondary btn-large col-md-12">Zoom link</a>
+            <% end %>
           </div>
-          <div class="embed-responsive embed-responsive-16by9 mb-5 ">
+          
+          <!--<div class="embed-responsive embed-responsive-16by9 mb-5 ">
             <iframe width="1280" height="720" src="https://www.youtube.com/embed/XeI8E20ZUE4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
+          </div>-->
+        
     </div>
   </div>
 </section>
