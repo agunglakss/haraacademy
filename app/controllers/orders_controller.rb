@@ -135,7 +135,8 @@ class OrdersController < ApplicationController
     number_key = Rails.application.credentials.dig(:watzap, :number_key)
     link = "https://haraacademy.id/courses/#{slug}"
     url = URI("https://api.watzap.id/v1/send_message")
-    
+    phone_number_to_int = phone_number.to_i
+    phone_number_to_string = "62#{phone_number_to_int}"
     message = "Hi #{first_name} #{last_name},\nTerimakasih sudah mendaftar kelas di Hara Academy, link meeting akan tersedia sehari sebelum live.\n#{link} \nSee you very soon😘\n\nHara Academy"
 
     https = Net::HTTP.new(url.host, url.port)
@@ -146,7 +147,7 @@ class OrdersController < ApplicationController
     request.body = JSON.dump({
       "api_key": "",
       "number_key": "",
-      "phone_no": phone_number,
+      "phone_no": phone_number_to_string,
       "message": message
     })
 
