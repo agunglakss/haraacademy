@@ -1,15 +1,11 @@
-<%= link_to admins_categories_path, class: "edu-btn btn-medium mt-3" do %>Back to categories <i class="icon-4"></i><% end %>
+<%= form_with model: category, url: url do |f| %>
+  <div class="mb-3 form-group">
+    <%= f.label :name do %>Category name <span class="text-danger">*</span><% end %>
+    <%= f.text_field :name, placeholder: "Input category name", autofocus: true,  class: "form-control" %>
+    <span class="text-danger"><%= category.errors[:name].first %></span>
+  </div>
 
-<%= form_with model: category, url: url, class: "mt-5" do |f| %>
-
-    <div class="mb-3 form-group">
-      <%= f.label :name do %>Category name <span class="text-danger">*</span><% end %>
-      <%= f.text_field :name, placeholder: "Input category name", autofocus: true,  class: "form-control" %>
-      <span class="text-danger"><%= category.errors[:name].first %></span>
-    </div>
-
-    <div class="mb-3 form-group">
-      <%= button_tag :submit, class: "edu-btn btn-medium"%>
-    </div>
-
+  <div class="mb-3 form-group">
+    <%= button_tag :submit, class: "edu-btn btn-medium"%>
+  </div>
 <% end %>
