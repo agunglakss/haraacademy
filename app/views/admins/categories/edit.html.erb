@@ -3,13 +3,9 @@
     <div class="row g-5 justify-content-center mt-3 mb-5">
       <div class="col-lg-12 ">
         <h1 class="text-dark">Edit category</h1>
-        
-        <div class="login-form-box shadow">
-          <div class="card">
-            <div class="card-body p-5">
-              <%= render "form", category: @category, url: admins_category_path  %>
-            </div>
-        </div>
+        <%= link_to admins_categories_path, class: "edu-btn btn-medium" do %>Back<% end %>
+        <div class="login-form-box shadow-sm">
+          <%= render "form", category: @category, url: admins_category_path  %>
         </div>
       </div>
     </div>  
