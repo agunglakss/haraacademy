@@ -4,6 +4,10 @@ class Admins::DashboardController < AdminsController
 
   def index
     @orders = Order.includes(:user, :course)
+    @total_order_today = Order.where(created_at: Date.today).count
+    @total_user_join_today = User.where(created_at: Date.today).count
+    @total_user = User.count
+
   end
 
   protected
