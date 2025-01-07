@@ -25,37 +25,39 @@
 	<div class="edu-course-area course-area-1 edu-section-gap bg-color-dark">
 			<div class="container">
 					<div class="section-title section-center">
-							<h2 class="title">New Story (Live!)</h2>
+							<h2 class="title">New Story</h2>
 							<span class="shape-line"><i class="icon-19"></i></span>
 					</div>
-					<div class="row g-5 justify-content-md-center">
-							<div class="col-offset-2 col-md-6">
-									<div class="edu-course course-style-1">
-										<% unless @course.nil? %>
-											<div class="inner">
-													<div class="thumbnail">
-															<%= link_to checkout_path(@course.id) do %>
-																<%= image_tag (@course.image), alt: "Hara Academy" %>
-															<% end %>
-													</div>
-													<div class="content">
-														<h2 class="title">
-															<%= link_to @course.title, checkout_path(@course.id) %>
-														</h2>
-														<%
-															num_groups = @course.price.to_s.chars.to_a.reverse.each_slice(3)
-															price = num_groups.map(&:join).join(',').reverse
-														%>
-														<%= link_to checkout_path(@course.id), class: "edu-btn btn-secondary btn-small" do %>Rp <%= price %><% end %>
-													</div>
-											</div>
-										<% end %>
+					<div class="row justify-content-md">
+							
+						<% @courses.each do |course| %>
+							<div class="col-offset-2 col-md-3">
+								<div class="edu-course course-style-1">
+									<div class="inner">
+										<div class="thumbnail">
+												<%= link_to checkout_path(course.id) do %>
+													<%= image_tag (course.image), alt: "Hara Academy" %>
+												<% end %>
+										</div>
+										<div class="content">
+											<h2 class="title">
+												<%= link_to course.title, checkout_path(course.id) %>
+											</h2>
+											<%
+												num_groups = course.price.to_s.chars.to_a.reverse.each_slice(3)
+												price = num_groups.map(&:join).join(',').reverse
+											%>
+											<%= link_to checkout_path(course.id), class: "edu-btn btn-secondary btn-small" do %>Rp <%= price %><% end %>
+										</div>
 									</div>
+								</div>
 							</div>
+						<% end %>
+										
 					</div>
-					<!-- <div class="course-view-all">
+					<div class="course-view-all">
 							<%= link_to courses_path(type: 'playback'), class: "edu-btn btn-secondary" do %>Browse more courses <i class="icon-4"></i><% end %>
-					</div> -->
+					</div>
 			</div>
 	</div>
 

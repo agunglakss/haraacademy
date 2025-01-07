@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @course = Course.includes(:category, :speaker).where(status: 'published').take
+    @courses = Course.includes(:category, :speaker).where(status: 'published')
   end
 end
